@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0A5DE76-4F1D-4C23-8828-DB4254F7AF7D}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NetEmu.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>NetEmu.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="Content\Images\Hd\Animations\bgNoise.plist" />
+    <BundleResource Include="Content\Images\Hd\Animations\loader.plist" />
+    <BundleResource Include="Content\Images\Hd\Animations\Male.plist" />
+    <BundleResource Include="Content\Cosima-DemoBold.otf" />
+    <BundleResource Include="Content\FaceOffM54.ttf" />
+    <BundleResource Include="Content\Fonts\Netron-Regular.ttf" />
+    <BundleResource Include="Content\Netron-Regular.ttf" />
+    <BundleResource Include="Content\Cosima-DemoBold.ttf" />
+    <BundleResource Include="Content\Fonts\Cosima-DemoBold.ttf" />
+    <None Include="Content\Fonts\FaceOffM54.ttf" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\FaceOffM54.ttf" />
+    <BundleResource Include="Resources\Netron-Regular.ttf" />
+    <BundleResource Include="Resources\Cosima-DemoBold.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CocosSharp">
+      <Version>1.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="CocosSharp.Forms">
+      <Version>1.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\NetEmu\NetEmu.csproj">
+      <Project>{5BFF96F1-266B-45D5-BC3D-2BC330523C59}</Project>
+      <Name>NetEmu</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Images\Ld\" />
+    <Folder Include="Content\Sounds\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\Animations\bgNoise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\classroom.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\Laboratory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\Animations\loader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\Animations\Male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\dBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rbBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cbBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\cbBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\rbBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\lines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\lines2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\offIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\profileWidget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\tWidgets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\fileWidget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\dataWidget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\lines2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profileWidget.png" />
+  </ItemGroup>
+</Project>
