@@ -26,10 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Custom\RgPopUp\Control\LessonItem.xaml">
+    <EmbeddedResource Update="Views\Custom\RgPopUp\Control\MenuForms.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Custom\RgPopUp\Control\MenuForms.xaml">
+    <EmbeddedResource Update="Views\Custom\RgPopUp\Control\SelectionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Custom\RgPopUp\SettingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Custom\RgPopUp\SubjectSelectionView.xaml">

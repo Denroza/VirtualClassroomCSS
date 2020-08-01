@@ -22,6 +22,9 @@ namespace NetEmu.Views.Layers
         private CCSpriteButton DataIcon;
         private CCSprite ScreenBoard;
         private CCSprite ScreenLabel;
+        private CCSpriteButton _SIIcon;
+        private CCSpriteButton _SCIcon;
+        private CCSpriteButton _NIIcon;
 
         public MenuLayer() : base() {
             ResourceManager.Instance.LoadGameFonts();

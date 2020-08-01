@@ -14,7 +14,7 @@ namespace NetEmu.Models
          
         public int LessonNumber { get; set; }
 
-        public int LessonTittle { get; set; }
+        public string LessonTitle { get; set; }
 
         public string LessonContent { get; set; }
        

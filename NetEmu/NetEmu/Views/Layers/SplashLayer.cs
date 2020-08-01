@@ -65,7 +65,7 @@ namespace NetEmu.Views.Layers
             Schedule(s => {
                 if (loader.NumberOfRunningActions <= 0) {
                     ScheduleOnce(sd => {
-                        SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Menu);
+                        SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Class);
                     }, 0f);
                 }
              

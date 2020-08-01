@@ -64,25 +64,40 @@ namespace NetEmu.Views.Custom.RgPopUp
             //    $"Name: {name}{Environment.NewLine}" +
             //    $"NickName: {nName}{Environment.NewLine}" +
             //    $"Gender: {gender}");
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(id) && !string.IsNullOrEmpty(gender.ToString())) {
-                try {
-                 Task.WhenAll(UserServices.SaveUserData(id,name,nName,gender)).ContinueWith(async s=> {
-                     CocoSharpControlUI.DisplayAlert("Notice","Registration Complete!");
-                 
-                     await PopupNavigation.Instance.PopAllAsync();
-                     await UserServices.LoadUserData();
-                 });
-                } catch (Exception ex) {
+            bool headsup = false;
+            Device.BeginInvokeOnMainThread(async () => {
+                headsup = await DisplayAlert("Notice!","Are you done?","Confirm","Cancel");
+                if (headsup)
+                {
+                    if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(id) && !string.IsNullOrEmpty(gender.ToString()))
+                    {
+                        try
+                        {
+                          await  Task.WhenAll(UserServices.SaveUserData(id, name, nName, gender)).ContinueWith(async s => {
+                                CocoSharpControlUI.DisplayAlert("Notice", "Registration Complete!");
 
-                    CocoSharpControlUI.DisplayAlert("Warning","Register Failed, Please try again.");
-                    return;
+                                await PopupNavigation.Instance.PopAllAsync();
+                                await UserServices.LoadUserData();
+                            }).ContinueWith(intro=> {
+                                ScheduleTriggers.SayAfterAuth = true;
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            CocoSharpControlUI.DisplayAlert("Warning", "Register Failed, Please try again.");
+                            return;
+                        }
+                    }
+                    else
+                    {
+
+                        CocoSharpControlUI.DisplayAlert("Warning", "Please fill up your name and gender");
+                    }
+
                 }
-            }
-            else
-            {
+            });
 
-                CocoSharpControlUI.DisplayAlert("Warning","Please fill up your name and gender");
-            }
 
         }
     }

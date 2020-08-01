@@ -1,8 +1,10 @@
 ﻿using CocosSharp;
 using NetEmu.Managers;
+using NetEmu.Services;
 using NetEmu.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -227,13 +229,18 @@ namespace NetEmu.Extensions
             // CurrentTileIndex = stateValue;
         }
 
+        public float SpeedUp { get; set; } = 0.1f;
+
         public async Task AddScript(string speaker, string script) {
             UnscheduleAll();
-          
+
+            TasksToken.DialougeToken = new System.Threading.CancellationTokenSource();
             _speakerName.Text = speaker;
             _speakerName.SystemFontSize = CustomSize.resizeFont(speaker,_speaker.ContentSize.Width/1.1f);
-       //     _textLabel.Text = script;
-            _textLabel.SystemFontSize = CustomSize.resizeFont(script,ContentSize.Width/1.01f);
+            _textLabel.Text = string.Empty;
+          //     _textLabel.Text = script;
+          var basedScript = "Kumusta at maligayang pagdating sa CSS Virtual Classroom, Mukhabg bago kang studyante paki-lagdaan muna ang iyong impormasyon.";
+            _textLabel.SystemFontSize = CustomSize.resizeFont(basedScript,ContentSize.Width/1.01f);
             var c =script.ToCharArray();
             var num = 0;
             var count = 0;
@@ -246,10 +253,18 @@ namespace NetEmu.Extensions
                 }
                 else {
                     UnscheduleAll();
-                   
+                    TasksToken.DialougeToken.Cancel();
                 }
-            },0.1f);
-            await Task.Delay(c.Length*100);
+            },SpeedUp);
+            try {
+                await Task.Delay(c.Length * 100, TasksToken.DialougeToken.Token);
+            } catch (Exception ex) {
+                UnscheduleAll();
+                _textLabel.Text = string.Empty;
+                _textLabel.Text = script;
+                Debug.WriteLine("Script Terminated");
+            }
+         
            
         }
         //public CCSprite AddDialougeBox()

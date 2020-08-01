@@ -12,7 +12,7 @@ namespace NetEmu.Views.Layers
         public LabBGLayer() : base() {
             bg = new CCSprite(ResourceManager.Instance.LaboratoryBG);
             bg.ContentSize = new CCSize(Screen.GameWidth * 1.5f, Screen.GameHeight);
-            bg.Position = new CCPoint(Screen.GameWidth / 2, Screen.GameHeight / 2);
+         
 
             this.AddChild(bg);
         }
@@ -20,6 +20,7 @@ namespace NetEmu.Views.Layers
         protected override void AddedToScene()
         {
             base.AddedToScene();
+            bg.Position = new CCPoint(Screen.GameWidth / 2, Screen.GameHeight / 2);
         }
     }
 }

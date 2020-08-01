@@ -159,6 +159,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Images\Hd\C1\" />
+    <Folder Include="Content\Images\Hd\C2\" />
+    <Folder Include="Content\Images\Hd\C3\" />
+    <Folder Include="Content\Images\Hd\C4\" />
     <Folder Include="Content\Images\Ld\" />
     <Folder Include="Content\Sounds\" />
   </ItemGroup>
@@ -220,9 +224,21 @@
     <BundleResource Include="Content\Images\Hd\dataWidget.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Content\Images\lines2.png" />
+    <BundleResource Include="Resources\profileWidget.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\profileWidget.png" />
+    <BundleResource Include="Content\Images\Hd\progressIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\settingsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\niButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\scButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\Images\Hd\siButton.png" />
   </ItemGroup>
 </Project>

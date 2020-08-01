@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="this"
+             x:Class="NetEmu.Views.Custom.RgPopUp.Control.SelectionView"
+               WidthRequest="{Binding CardWidth}"
+        HeightRequest="{Binding CardHeight}">
+
+    <Grid>
+        <Image Source="screen.png" Aspect="Fill"      
+                       />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="90*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView Grid.Row="1" Grid.Column="1">
+                <StackLayout x:Name="SubjectList"/>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentView>

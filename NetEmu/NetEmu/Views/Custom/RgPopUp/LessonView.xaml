@@ -20,16 +20,13 @@
                       EasingOut="SinIn"
       HasBackgroundAnimation="False"/>
     </pages:PopupPage.Animation>
-    <Frame
-         BackgroundColor="Blue"
-        CornerRadius="2"
-        InputTransparent="True"
-        >
+ 
         <Grid>
-            <Grid.RowDefinitions>
-                
-            </Grid.RowDefinitions>
+            <Image Source="screen.png" Aspect="Fill"/>
+            <Grid>
+ 
+            </Grid>
         </Grid>
-        
-    </Frame>
+     
+
 </pages:PopupPage>

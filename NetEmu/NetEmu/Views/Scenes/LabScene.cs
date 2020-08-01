@@ -15,6 +15,7 @@ namespace NetEmu.Views.Scenes
             this.AddLayer(bgLayer,0);
 
             var layer = new LabLayer();
+            layer.Opacity = 0;
             this.AddLayer(layer,1);
         }
 

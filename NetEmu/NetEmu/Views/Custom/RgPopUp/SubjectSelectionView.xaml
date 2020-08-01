@@ -20,16 +20,36 @@
                       EasingOut="SinIn"
       HasBackgroundAnimation="False"/>
     </pages:PopupPage.Animation>
-    <Frame
-         BackgroundColor="Blue"
+    <Frame     BackgroundColor="Transparent">
+        <Frame x:Name="FrameBody"
+         BackgroundColor="Transparent"
         CornerRadius="2"
         InputTransparent="True"
         >
-        <Grid>
-            <ScrollView>
-                <StackLayout x:Name="ItemBody"/>
-            </ScrollView>
-        </Grid>
-        
+            <!--<Grid  >
+                <Image Source="screen.png" Aspect="Fill" 
+                        
+                       />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="80*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollView Grid.Row="1" Grid.Column="1">
+                        <StackLayout VerticalOptions="CenterAndExpand" x:Name="ItemBody"/>
+                    </ScrollView>
+                </Grid>
+
+            </Grid>-->
+         
+                <StackLayout VerticalOptions="CenterAndExpand" x:Name="ItemBody"/>
+           
+        </Frame>
     </Frame>
 </pages:PopupPage>

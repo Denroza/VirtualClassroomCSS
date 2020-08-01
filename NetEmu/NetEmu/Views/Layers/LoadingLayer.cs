@@ -71,6 +71,8 @@ namespace NetEmu.Views.Layers
                             SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Class);
                         else if (AppSettings.CurrentScene == SceneManagers.SceneType.Menu)
                             SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Menu);
+                        else if (AppSettings.CurrentScene == SceneManagers.SceneType.Lab)
+                            SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Lab);
                     }, 0f);
                  
                 }

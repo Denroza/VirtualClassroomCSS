@@ -55,6 +55,10 @@ namespace NetEmu.Managers
         public string BlueScreen { get; private set; }
         public string CircleButton { get; private set; }
         public string LongButton { get; private set; }
+        public string ProgressIcon { get; private set; }
+        public string SettingsIcon { get; private set; }
+       
+
 
         //Menu Assets
         public string ExitIcon { get; private set; }
@@ -62,6 +66,9 @@ namespace NetEmu.Managers
         public string FileIcon { get; private set; }
         public string SaveIcon { get; private set; }
         public string ProfileIcon { get; private set; }
+        public string SIButton { get; private set; }
+        public string SCButton { get; private set; }
+        public string NIButton { get; private set; }
 
         public void LoadGameBackgrounds() {
             ClassroomBG = $"classroom.jpg";
@@ -82,6 +89,13 @@ namespace NetEmu.Managers
             CircleButton = $"cbBlue.png";
             LongButton = $"rbBlue.png";
             TerminalIcon = $"tWidgets.png";
+            FileIcon = $"fileWidget.png";
+            ProgressIcon = $"progressIcon.png";
+            SettingsIcon = $"settingsIcon.png";
+
+            NIButton = $"niButton.png";
+            SCButton = $"scButton.png";
+            SIButton = $"siButton.png";
         }
 
         public void LoadLabAssets() {
@@ -89,6 +103,7 @@ namespace NetEmu.Managers
             CircleButton = $"cbBlue.png";
             LongButton = $"rbBlue.png";
             TerminalIcon = $"tWidgets.png";
+            LaboratoryBG = $"Laboratory.jpg";
         }
 
         public void LoadMenuAssets() {
@@ -100,6 +115,8 @@ namespace NetEmu.Managers
             ProfileIcon = $"profileWidget.png";
             FileIcon = $"fileWidget.png";
             TerminalIcon = $"tWidgets.png";
+
+         
         }
 
         public void LoadGameAnimations() {
