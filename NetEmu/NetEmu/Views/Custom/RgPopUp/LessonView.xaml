@@ -24,8 +24,29 @@
         <Grid>
             <Image Source="screen.png" Aspect="Fill"/>
             <Grid>
- 
+                    <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="95*"/>
+                <RowDefinition Height="2.5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="95*"/>
+                <ColumnDefinition Width="2.5*"/>
+            </Grid.ColumnDefinitions>
+                
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="75*"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="TitleLabel" FontAttributes="Bold" LineBreakMode="WordWrap" Grid.Row="0" FontSize="Large" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                <ScrollView Grid.Row="1">
+                    <StackLayout x:Name="ItemContainer"/>
+                </ScrollView>
             </Grid>
+             </Grid>
         </Grid>
      
 

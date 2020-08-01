@@ -1,7 +1,9 @@
-﻿using NetEmu.Models;
+﻿using CocosSharp;
+using NetEmu.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace NetEmu.Services
 {
@@ -41,5 +43,52 @@ namespace NetEmu.Services
 
                 };
             } }
+
+
+
+        public static StackLayout Core1_1LessonView() {
+            var stack = new StackLayout();
+            var s1 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode =  LineBreakMode.WordWrap,
+                Text = $"Insert the DVD Installer (windows 2008 sever or Windows 7)"
+            };
+            var s2 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Go to Command prompt (CMD) and input the following: {Environment.NewLine}" +
+                $"DISKPART{Environment.NewLine}LIST DISK{Environment.NewLine} SELECT DISK ? (the usb letter){Environment.NewLine} CLEAN {Environment.NewLine} CREATE PARTITION PRIMARY{Environment.NewLine} SELECT PARTITION 1 {Environment.NewLine}ACTIVE{Environment.NewLine} FORMAT FS = NTFS{Environment.NewLine} ASSIGN{Environment.NewLine} EXIT"
+            };
+           
+
+            var s3 = new Label() { TextColor = Color.White, LineBreakMode = LineBreakMode.WordWrap, Text = "Go to your installer DVD and find for the folder ( BOOT)"  };
+
+            var s4 = new Label() { TextColor = Color.White, LineBreakMode = LineBreakMode.WordWrap, Text = $"G:\\>CD BOOT RUN {Environment.NewLine}G:BOOT\\BOOTSECT / NT60 E: (the e: is your usb letter with a: )" };
+            var s5 = new Label() { TextColor = Color.White, LineBreakMode = LineBreakMode.WordWrap, Text = $"Then it will say successfully updated NTFS filesystem boot code and so on. Complete now copy the files from you install disk to the usb."};
+            var s6 = new Label() { TextColor = Color.White, LineBreakMode = LineBreakMode.WordWrap, Text = $"XCOPY G:\\*.* E:\\ /E /H /F (G: is your source drive E: is your target drive)" };
+            var s = new StackLayout();
+            var s1_1 = new Label() { TextColor = Color.White, Text = "PREPARE INSTALLER USING RUFUS", FontAttributes = FontAttributes.Bold };
+            s.Children.Add(s1_1);
+            var image = new Image() { Source = "c1_1_1.png", Aspect = Aspect.AspectFit };
+            s.Children.Add(image);
+            var s7 = new Label() { TextColor = Color.White, LineBreakMode = LineBreakMode.WordWrap, Text = $"Add the ISO files and follow the instruction. Make sure the Flash Drive is connected. All files in flash drive will be deleted." };
+
+            stack.Children.Add(s1);
+            stack.Children.Add(s2);
+            stack.Children.Add(s3);
+            stack.Children.Add(s4);
+            stack.Children.Add(s5);
+            stack.Children.Add(s6);
+            stack.Children.Add(s);
+            stack.Children.Add(s7);
+            return stack;
+        }
+
+        
+        
+
+            
     }
 }

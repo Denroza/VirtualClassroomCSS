@@ -14,9 +14,12 @@ namespace NetEmu.Views.Custom.RgPopUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LessonView : PopupPage
     {
-        public LessonView()
+        public LessonView(string title = "", View view = null)
         {
             InitializeComponent();
+            TitleLabel.Text = title;
+            if(view != null)
+                ItemContainer.Children.Add(view);
 
         }
 
