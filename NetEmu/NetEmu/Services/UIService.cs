@@ -6,8 +6,11 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using Xamarin.Forms.Markup;
 
 namespace NetEmu.Services
 {
@@ -74,6 +77,30 @@ namespace NetEmu.Services
                 scene.ResumeListeners(true);
             };
             return layer;
+        }
+
+
+        public static StackLayout CreateImageViewCaption(string caption,string source) {
+            var stack = new StackLayout();
+          
+            var label = new Label() { Text = caption, TextColor = Color.White  };
+
+            Image image = new Image() { Source =source,Aspect = Aspect.AspectFit };
+
+            var tapImage = new TapGestureRecognizer();
+            tapImage.Tapped += (tapped,_event) => {
+                Device.BeginInvokeOnMainThread( async() => {
+                    await PopupNavigation.Instance.PushAsync(new ShowImageView(source));
+                });
+            };
+
+            image.GestureRecognizers.Add(tapImage);
+            stack.Children.Add(label);
+
+            stack.Children.Add(image);
+           
+
+            return stack;
         }
     }
 }
