@@ -314,6 +314,64 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
         public static StackLayout Core1_3LessonView() {
             var stack = new StackLayout();
 
+            var cap1 = UIService.CreateImageViewCaption("","c1_3_1.png");
+            var cap2 = UIService.CreateImageViewCaption("Add the openSUSE-13.2-DVD-x86_64.ISO and save it to USB Flash Disk and Click Start.", "c1_3_2.png");
+            var cap3 = UIService.CreateImageViewCaption("", "c1_3_3.png");
+            var l1 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = "Setup the bios to boot in usb" 
+            };
+            var cap4 = UIService.CreateImageViewCaption("In boot menu", "c1_3_4.png");
+            var cap5 = UIService.CreateImageViewCaption("", "c1_3_5.png");
+            var cap6 = UIService.CreateImageViewCaption("", "c1_3_6.png");
+            var cap7 = UIService.CreateImageViewCaption("", "c1_3_7.png");
+            var cap8 = UIService.CreateImageViewCaption("", "c1_3_8.png");
+            var cap9 = UIService.CreateImageViewCaption("Click next", "c1_3_9.png");
+            var cap10 = UIService.CreateImageViewCaption("", "c1_3_10.png");
+            var cap11 = UIService.CreateImageViewCaption("In partitioning the hard disk select manual partition and make two partition 10% for SWAP files and 60% for EXT4 partition under SYSTEM FILES. Click next.", "c1_3_11.png");
+            var cap12 = UIService.CreateImageViewCaption("", "c1_3_12.png");
+            var cap13 = UIService.CreateImageViewCaption("", "c1_3_13.png");
+            var cap14 = UIService.CreateImageViewCaption("", "c1_3_14.png");
+            var cap15 = UIService.CreateImageViewCaption("", "c1_3_15.png");
+            var cap16 = UIService.CreateImageViewCaption("Use KDE as Desktop", "c1_3_16.png");
+            var cap17 = UIService.CreateImageViewCaption("In Installation setting Select SOFTWARE", "c1_3_17.png");
+            var cap18 = UIService.CreateImageViewCaption("", "c1_3_18.png");
+            var cap19 = UIService.CreateImageViewCaption("Click Install", "c1_3_19.png");
+            var cap20 = UIService.CreateImageViewCaption("", "c1_3_20.png");
+            var cap21 = UIService.CreateImageViewCaption("", "c1_3_21.png");
+            var l2 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Installing services {Environment.NewLine} Follow the Onscreen procedures {Environment.NewLine} Use your name as user and use Css2015 as your password in “root” use and “your name”"
+            };
+
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(l1);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(cap14);
+            stack.Children.Add(cap15);
+            stack.Children.Add(cap16);
+            stack.Children.Add(cap17);
+            stack.Children.Add(cap18);
+            stack.Children.Add(cap19);
+            stack.Children.Add(cap20);
+            stack.Children.Add(cap21);
+            stack.Children.Add(l2);
+
             return stack;
         }
 

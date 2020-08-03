@@ -61,7 +61,7 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                     createdLayout = LessonService.Core1_2LessonView();
                     break;
                 case "Core1-3":
-
+                    createdLayout = LessonService.Core1_3LessonView();
                     break;
                 case "Core2-1":
 
