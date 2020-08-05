@@ -376,4 +376,49 @@
   <ItemGroup>
     <AndroidResource Include="Resources\core1_2_9.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c2_1_8.png" />
+  </ItemGroup>
 </Project>
