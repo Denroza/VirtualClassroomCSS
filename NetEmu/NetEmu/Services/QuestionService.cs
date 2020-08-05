@@ -1,6 +1,9 @@
 ﻿using NetEmu.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace NetEmu.Services
@@ -22,11 +25,27 @@ namespace NetEmu.Services
 
         public static void LoadQuestions() {
             var questions = new List<QuestionModel>();
-            LoadedQuestions = new List<QuestionModel>();
-            
-            
+            LoadedQuestions = JsonConvert.DeserializeObject<List<QuestionModel>>(LoadQuestionsAndAnswers()); ;
         }
 
+        private static string LoadQuestionsAndAnswers() {
+
+            var result = string.Empty;
+            string fileName = "NetEmu.Data.QEModel.json";
+            result = GetResourceStringFromFile(fileName);
+            return result;
+        }
+        private static string GetResourceStringFromFile(string fileName)
+        {
+            var result = string.Empty;
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
+            using (Stream stream = assembly.GetManifestResourceStream(fileName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                result = reader.ReadToEnd();
+            }
+            return result;
+        }
         public static void LoadTestProgress() { 
         
         }

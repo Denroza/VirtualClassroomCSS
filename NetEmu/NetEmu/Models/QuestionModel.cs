@@ -23,10 +23,10 @@ namespace NetEmu.Models
         [JsonProperty(PropertyName = "correct_answer")]
         public string CorrectAnswer { get; set; }
 
-        [JsonProperty(PropertyName = "wrong_answer")]
+        [JsonProperty(PropertyName = "wrong_answers")]
         public List<string> WrongAnswer { get; set; }
 
         [JsonProperty(PropertyName = "state")]
-        public State State { get; set; } = State.NotYetAnswered;
+        public State? State { get; set; }
     }
 }

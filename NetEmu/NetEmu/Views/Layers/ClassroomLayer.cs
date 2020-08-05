@@ -18,7 +18,7 @@ namespace NetEmu.Views.Layers
     public class ClassroomLayer : BaseLayer
     {
         private CCSprite ProfMale;
-        private CCRepeatForever ProfAni;
+        private CCRepeatForever ProfAni;                                                              
         //private CCDialouge dialouge;
         private CCSpriteButton _terminal;
         private CCSpriteButton _labIcon;
@@ -47,8 +47,8 @@ namespace NetEmu.Views.Layers
             this.AddChild(ProfMale,0);
             var fade = new CCFadeTo(2f,255);
 
-            _labIcon = new CCSpriteButton(ResourceManager.Instance.CircleButton,"LABORATORY",ResourceManager.Instance.FaceOffM54_Font,
-               Screen.GameWidth / 10, Screen.GameWidth / 10);
+            //_labIcon = new CCSpriteButton(ResourceManager.Instance.CircleButton,"LABORATORY",ResourceManager.Instance.FaceOffM54_Font,
+            //   Screen.GameWidth / 10, Screen.GameWidth / 10);
         
            DialougeService.GameDialouge = new CCDialouge(ResourceManager.Instance.DialougeBox, Screen.DeviceWidth, Screen.DeviceHeight / 4.5f);
             
@@ -72,14 +72,14 @@ namespace NetEmu.Views.Layers
             if (!UserServices.hasUserData)
             {
                 _terminal.Visible = false;
-                _labIcon.Visible = false;
+               // _labIcon.Visible = false;
                 DialougeService.GameDialouge.Introduction();
                 Schedule(intro=> {
                     if (ScheduleTriggers.SayAfterAuth) {
                         ScheduleTriggers.SayAfterAuth = false;
 
                         _terminal.Visible = true ;
-                        _labIcon.Visible = true;
+                    //    _labIcon.Visible = true;
                         DialougeService.GameDialouge.IntroAuthScript();
                     }
                 });
@@ -88,17 +88,17 @@ namespace NetEmu.Views.Layers
                 DialougeService.GameDialouge.Greetings();
 
                 _terminal.Visible = true;
-                _labIcon.Visible = true; 
+               // _labIcon.Visible = true; 
             }
 
             SpriteButtonEvents();
 
             this.AddChild(_terminal);
-            this.AddChild(_labIcon);
+           // this.AddChild(_labIcon);
             this.AddChild(_settingsIcon);
             this.AddChild(_progressIcon);
             this.AddChild(_fileIcon);
-       
+            
         }
 
         private void SpriteButtonEvents() {
@@ -109,25 +109,39 @@ namespace NetEmu.Views.Layers
             };
 
             _fileIcon.Released = (touch, _event) => {
+                if (_fileIcon.Opacity !=0) {
+                    _fileIcon.UpdateDisplayedColor(CCColor3B.White);
+                    iconsShowed = false;
+                    this.PauseListeners(true);
+                    Scene.AddChild(UIService.ShowCoreIcons(Scene), 4);
+                    HideIcons();
+                    _fileIcon.Schedule(go => {
+                        if (ScheduleTriggers.GotoLab)
+                        {
+                            ScheduleTriggers.GotoLab = false;
+                            QuestionService.LoadQuestions();
+                            AppSettings.CurrentScene = SceneManagers.SceneType.Lab;
+                            SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
+                        }
+                    });
 
-                _fileIcon.UpdateDisplayedColor(CCColor3B.White);
-                iconsShowed = false;
-                this.PauseListeners(true);
-                Scene.AddChild(UIService.ShowCoreIcons(Scene),4);
-                HideIcons();
-            
+                }
+
             };
 
             _settingsIcon.Pressed = (touch, _event) => {
                 _settingsIcon.UpdateDisplayedColor(CCColor3B.Gray);
             };
             _settingsIcon.Released = (touch, _event) => {
-                _settingsIcon.UpdateDisplayedColor(CCColor3B.White);
-                iconsShowed = false;
-                HideIcons();
-                Device.BeginInvokeOnMainThread(async () => {
-                    await PopupNavigation.Instance.PushAsync(new SettingView());
-                });
+                if (_settingsIcon.Opacity != 0 ) {
+                    _settingsIcon.UpdateDisplayedColor(CCColor3B.White);
+                    iconsShowed = false;
+                    HideIcons();
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await PopupNavigation.Instance.PushAsync(new SettingView());
+                    });
+                }
+            
             };
 
 
@@ -135,6 +149,7 @@ namespace NetEmu.Views.Layers
                 _terminal.UpdateDisplayedColor(CCColor3B.Gray);
             };
             _terminal.Released = (touch, _event) => {
+
                 if (!animationDone) {
                     _terminal.UpdateDisplayedColor(CCColor3B.White);
                     //AppSettings.CurrentScene = SceneManagers.SceneType.Menu;
@@ -161,25 +176,25 @@ namespace NetEmu.Views.Layers
                 TasksToken.DialougeToken.Cancel();
             };
 
-            _labIcon.Pressed = (touch, _event) => {
-                _labIcon.UpdateDisplayedColor(CCColor3B.Gray);
-            };
-            _labIcon.Released = (touch, _event) => {
-                _labIcon.UpdateDisplayedColor(CCColor3B.White);
-                DialougeService.GameDialouge.GotoLab();
-                _labIcon.Schedule(go =>
-                {
-                    if (ScheduleTriggers.GotoLab)
-                    {
-                        ScheduleTriggers.GotoLab = false;
-                        QuestionService.LoadSampleQuestions();
-                        AppSettings.CurrentScene = SceneManagers.SceneType.Lab;
-                        SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
-                    }
+            //_labIcon.Pressed = (touch, _event) => {
+            //    _labIcon.UpdateDisplayedColor(CCColor3B.Gray);
+            //};
+            //_labIcon.Released = (touch, _event) => {
+            //    _labIcon.UpdateDisplayedColor(CCColor3B.White);
+            //    DialougeService.GameDialouge.GotoLab();
+            //    _labIcon.Schedule(go =>
+            //    {
+            //        if (ScheduleTriggers.GotoLab)
+            //        {
+            //            ScheduleTriggers.GotoLab = false;
+            //            QuestionService.LoadSampleQuestions();
+            //            AppSettings.CurrentScene = SceneManagers.SceneType.Lab;
+            //            SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
+            //        }
 
-                });
+            //    });
 
-            };
+            //};
 
         }
 
@@ -190,7 +205,7 @@ namespace NetEmu.Views.Layers
             DialougeService.GameDialouge.Position = new CCPoint(Screen.DeviceWidth/2, DialougeService.GameDialouge.ContentSize.Height/1.75f);
             ProfMale.RunAction(AnimationManager.Instance.ProfAnimation);
             _terminal.Position = new CCPoint(_terminal.ContentSize.Width/1.5f,Screen.GameHeight - _terminal.ContentSize.Height/1.15f);
-            _labIcon.Position = new CCPoint(Screen.GameWidth - _labIcon.ContentSize.Width / 1.15f, _terminal.PositionY);
+        //    _labIcon.Position = new CCPoint(Screen.GameWidth - _labIcon.ContentSize.Width / 1.15f, _terminal.PositionY);
        
             initialPos = _terminal.Position;
             

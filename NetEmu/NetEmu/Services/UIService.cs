@@ -24,21 +24,26 @@ namespace NetEmu.Services
             var layer = new CCLayer();
             layer.Opacity = 0;
             var bg = new CCSprite(ResourceManager.Instance.BlueScreen);
-            bg.ContentSize = new CCSize(Screen.DeviceWidth/1.02f,Screen.DeviceHeight/4f);
+            bg.ContentSize = new CCSize(Screen.DeviceWidth/1.02f,Screen.DeviceHeight/4.15f);
             bg.Position = new CCPoint(Screen.DeviceWidth/2, Screen.DeviceHeight/2);
-           var _SIIcon = new CCSpriteButton(ResourceManager.Instance.SIButton, bg.ContentSize.Width/ 4.5f, bg.ContentSize.Width / 4.5f);
-           var _SCIcon = new CCSpriteButton(ResourceManager.Instance.SCButton, bg.ContentSize.Width / 4.5f, bg.ContentSize.Width / 4.5f);
-           var _NIIcon = new CCSpriteButton(ResourceManager.Instance.NIButton, bg.ContentSize.Width / 4.5f, bg.ContentSize.Width / 4.5f);
+           var _SIIcon = new CCSpriteButton(ResourceManager.Instance.SIButton, bg.ContentSize.Width/ 5.15f, bg.ContentSize.Width / 5.15f);
+           var _SCIcon = new CCSpriteButton(ResourceManager.Instance.SCButton, bg.ContentSize.Width / 5.15f, bg.ContentSize.Width / 5.15f);
+           var _NIIcon = new CCSpriteButton(ResourceManager.Instance.NIButton, bg.ContentSize.Width / 5.15f, bg.ContentSize.Width / 5.15f);
+            var _QAIcon = new CCSpriteButton(ResourceManager.Instance.QAButton, bg.ContentSize.Width / 5.15f, bg.ContentSize.Width / 5.15f);
             var exitIcon = new CCSpriteButton(ResourceManager.Instance.LongButton,"EXIT",ResourceManager.Instance.Netron_Font,
-                bg.ContentSize.Width/2.2f,bg.ContentSize.Height/5f,1.75f); 
+                bg.ContentSize.Width/2.2f,bg.ContentSize.Height/5f,1.75f);
 
-            _NIIcon.Position = new CCPoint(bg.ContentSize.Width / 2,bg .ContentSize.Height - _NIIcon.ContentSize.Height/1.5f);
-            _SIIcon.Position = new CCPoint(_NIIcon.Position.X - _SIIcon.ContentSize.Width * 1.1f, _NIIcon.Position.Y);
-            _SCIcon.Position = new CCPoint(_NIIcon.PositionX + _SCIcon.ContentSize.Width * 1.1f, _NIIcon.Position.Y);
+
+            _SIIcon.Position = new CCPoint(_SIIcon.ContentSize.Width, bg.ContentSize.Height - _SIIcon.ContentSize.Height / 1.5f);
+            _NIIcon.Position = new CCPoint(_SIIcon.PositionX + _NIIcon.ContentSize.Width *1.1f,_SIIcon.PositionY);
+          
+            _SCIcon.Position = new CCPoint(_NIIcon.PositionX + _SCIcon.ContentSize.Width * 1.1f, _SIIcon.PositionY);
+            _QAIcon.Position = new CCPoint(_SCIcon.PositionX + _QAIcon.ContentSize.Width*1.1f,_SIIcon.PositionY);
             exitIcon.Position = new CCPoint(bg.ContentSize.Width/2, exitIcon.ContentSize.Height/1.2f);
             bg.AddChild(_NIIcon);
             bg.AddChild(_SIIcon);
             bg.AddChild(_SCIcon);
+            bg.AddChild(_QAIcon);
             bg.AddChild(exitIcon);
             layer.AddChild(bg);
 
@@ -50,6 +55,9 @@ namespace NetEmu.Services
             };
             _SCIcon.Pressed = (touch, _event) => {
             
+            };
+            _QAIcon.Pressed = (touch, _event) => {
+
             };
             exitIcon.Pressed = (touch, _event) => { 
             
@@ -72,9 +80,15 @@ namespace NetEmu.Services
                     await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core1));
                 });
             };
+           _QAIcon.Released = (touch, _event) => {
+               layer.RemoveFromParent();
+               scene.ResumeListeners(true);
+               DialougeService.GameDialouge.GotoLab();
+           };
             exitIcon.Released = (touch, _event) => {
                 layer.RemoveFromParent();
                 scene.ResumeListeners(true);
+               
             };
             return layer;
         }

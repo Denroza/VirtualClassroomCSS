@@ -155,7 +155,7 @@ namespace NetEmu.Views.Layers
             QuestionText.HorizontalAlignment = CCTextAlignment.Center;
             QuestionText.Position = new CCPoint(QuestionScreen.ContentSize.Width / 2, QuestionScreen.ContentSize.Height / 2);
             QuestionText.Color = CCColor3B.White;
-            QuestionText.Dimensions = new CCSize(QuestionScreen.ContentSize.Width *1.6f,QuestionScreen.ContentSize.Height*1.9f);
+            QuestionText.Dimensions = new CCSize(QuestionScreen.ContentSize.Width *1.9f,QuestionScreen.ContentSize.Height*4.4f);
             QuestionScreen.AddChild(QuestionText);
             QuestionScreen.ScaleY = 0;
         
@@ -176,7 +176,7 @@ namespace NetEmu.Views.Layers
 
               var  choiceButton = new CCSpriteButton(ResourceManager.Instance.LongButton,selectedAnswer,ResourceManager.Instance.Netron_Font,
                     
-                    AnswerScreens.ContentSize.Width/1.25f, AnswerScreens.ContentSize.Height/5f,1.8f);
+                    AnswerScreens.ContentSize.Width/1.05f, AnswerScreens.ContentSize.Height/5f,2.8f);
                 
                 if (i == 0)
                 {

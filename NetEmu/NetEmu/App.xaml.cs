@@ -19,6 +19,7 @@ namespace NetEmu
         protected override async void OnStart()
         {
               UserServices.hasUserData =  await  UserServices.LoadUserData();
+            QuestionService.LoadQuestions();
         }
 
         protected override void OnSleep()

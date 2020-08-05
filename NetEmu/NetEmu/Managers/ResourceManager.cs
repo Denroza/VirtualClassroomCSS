@@ -69,6 +69,7 @@ namespace NetEmu.Managers
         public string SIButton { get; private set; }
         public string SCButton { get; private set; }
         public string NIButton { get; private set; }
+        public string QAButton { get; private set; }
 
         public void LoadGameBackgrounds() {
             ClassroomBG = $"classroom.jpg";
@@ -96,6 +97,7 @@ namespace NetEmu.Managers
             NIButton = $"niButton.png";
             SCButton = $"scButton.png";
             SIButton = $"siButton.png";
+            QAButton = $"qaButton.png";
         }
 
         public void LoadLabAssets() {

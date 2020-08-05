@@ -69,8 +69,11 @@ namespace NetEmu.Extensions
         {
             ContentSize = new CCSize(width, heigth);
            ButtonLabel= new CCLabel(textName, fontname, CustomSize.resizeFont(textName, width / sizeControl), CCLabelFormat.SystemFont);
+            ButtonLabel.Dimensions = new CCSize(ContentSize.Width *1.6f, ContentSize.Height*2.1f);
             ButtonLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
             ButtonLabel.LineBreak = CCLabelLineBreak.Word;
+            ButtonLabel.VerticalAlignment = CCVerticalTextAlignment.Center;
+            ButtonLabel.HorizontalAlignment = CCTextAlignment.Center;
             AddChild(ButtonLabel);
         }
 

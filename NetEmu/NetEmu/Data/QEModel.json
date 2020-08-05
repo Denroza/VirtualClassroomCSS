@@ -1,0 +1,58 @@
+[
+ {
+   "id": 1,
+   "question": "What could be the problem if the display does not match with what you expect to see on the monitor?",
+   "correct_answer": "A video driver is not installed. Install a video driver",
+  "wrong_answers": [ "The Monitor is not compatible with the system unit", "The monitor is defected.", "The monitor is not properly connected to the system unit." ] ,
+   "state": ""
+ },
+ {
+   "id": 2,
+   "question": "This refers to the special software that interfaces the major hardware components of a computer with the operating system.",
+   "correct_answer": "BIOS",
+  "wrong_answers": [ "Control Panel", "Device Manager", "RAM" ],
+   "state": ""
+ },
+ {
+   "id": 3,
+   "question": "These type of tools prevents the sudden flow of electrivity to avoid damage the computer components and parts.",
+   "correct_answer": "ESD Tools",
+  "wrong_answers": [ "Hand Tools", "Cleaning Tools", "Diagnostic Tools" ] ,
+   "state": ""
+ },
+ {
+   "id": 4,
+   "question": "This is a hand tool which is used to loosen or tighten crosshead screws.",
+   "correct_answer": "Philips Head Screwdriver",
+  "wrong_answers": [ "Flat Head Screwdriver"," Torx Screwdrver", "Hex Driver" ],
+   "state": ""
+ },
+ {
+   "id": 5,
+   "question": "This is workhorse of the machine and sometimes referred to as a computer’s brain.",
+   "correct_answer": "Central Processing Unit (CPU)",
+  "wrong_answers": [ "Random Access Memory (RAM)", "Hard Disk Drive (HDD)", "Solid State Drive" ],
+   "state": ""
+ },
+ {
+   "id": 6,
+   "question": "This is a storage device that uses integrated circuits assemblies memory to store data persistently.",
+   "correct_answer": "Solid State Drive",
+  "wrong_answers": [ "Hard Disk Drive (HDD)", "Random Access Memory (RAM)", " Motherboard" ],
+   "state": ""
+ },
+ {
+   "id": 7,
+   "question": "Which is not a role of the System's case?",
+   "correct_answer": "Store low-level information when the computer is turned off.",
+  "wrong_answers": [ "Provide a solid structural framework.", "Protects the inside of your system from the outside world, and vice-versa.", "Helps in the cooling process of the components." ],
+   "state": ""
+ },
+ {
+   "id": 8,
+   "question": "What should you do if you want to install an operating system in a computer but it does not have an optical drive?",
+   "correct_answer": "Create a Bootable flash disk",
+  "wrong_answers": [ "Install the OS via network.", "Save the OS in the Flash Drive then run it on the computer.", "Save the OS on the computer and run it from there." ],
+   "state": ""
+ }
+]

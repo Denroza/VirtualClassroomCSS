@@ -42,7 +42,7 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                     foreach (var items in LessonService.Core1Lessons) {
                         var view = new LessonItem() {
                          LessonType = items.LessonTitle ,
-                         CoreIdentityGuid = items.LessonId  ,
+                       
                          Lesson = items
                          
                         };
@@ -57,7 +57,7 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                         var view = new LessonItem()
                         {
                             LessonType = items.LessonTitle,
-                            CoreIdentityGuid = items.LessonId,
+                          
                             Lesson = items
                         };
                         SubjectList.Children.Add(view);
@@ -71,7 +71,7 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                         var view = new LessonItem()
                         {
                             LessonType = items.LessonTitle,
-                            CoreIdentityGuid = items.LessonId,
+                         
                             Lesson = items
                         };
                         SubjectList.Children.Add(view);
