@@ -45,7 +45,7 @@ namespace NetEmu.Services
             } }
 
 
-
+        //Core 1
         public static StackLayout Core1_1LessonView() {
             var stack = new StackLayout();
             var s1 = new Label()
@@ -419,7 +419,7 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
             }
         }
 
-
+       //COre 2
         public static StackLayout Core2_1LessonView() {
             var stack = new StackLayout();
             var l1 = new Label() {
@@ -502,7 +502,7 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
                             HorizontalTextAlignment = TextAlignment.Center,
                             Text = DODonts[c]
                         };
-                        if (label.Text == "DO")
+                        if (label.Text == "Do")
                         {
                             label.TextColor = Color.Green;
                         }
@@ -572,19 +572,143 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
         public static StackLayout Core2_2LessonView()
         {
             var stack = new StackLayout();
+            var cap1 = UIService.CreateImageViewCaption("","c2_2_1.png");
+            var l1 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"⦁	Setup wireless router {Environment.NewLine}A wireless router broadcasts radio signals containing packets of data to computers within range.You can plug a wireless router into a broadband modem to create a wireless network capable of sharing Internet service with connected devices.While setting up the hardware itself is essentially the same from router to router, the network settings configuration for a D-Link is different from that of other brands.After connecting the router and modem to one another, log in to the D - Link router from a Web browser to set up the Wi - Fi network."
+            };
+            var l2 = new Label() { 
+                TextColor = Color.Black,
+                BackgroundColor  = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Hardware Setup{Environment.NewLine}Step 1{Environment.NewLine}Disconnect the modem from its power adapter.Connect an Ethernet cable to the modem.{ Environment.NewLine }Step 2{ Environment.NewLine }Plug the other end of the cable into the \"Internet\" port on the back of the wireless router.{ Environment.NewLine }Step 3{ Environment.NewLine }Connect the computer to a LAN port on the D - Link.Connect the modem and the router to a power outlet."
+            };
+
+            var l3 = new Label() {
+                TextColor = Color.Black,
+                BackgroundColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Basic Configuration{Environment.NewLine}Step 1{ Environment.NewLine }Know the default router IP address and default user name with password in a Web browser to access the setup wizard.{ Environment.NewLine }Step 2{ Environment.NewLine }Choose your connection type from the options.Most Ethernet connections use DHCP.Click \"Connect.\"{ Environment.NewLine }Step 3{ Environment.NewLine }Enter the username and password for your Internet service into the appropriate fields or fill in the IP Address, Subnet Mask, Gateway Address and Primary DNS Server fields, if applicable."
+            };
+           
+            var cap2 = UIService.CreateImageViewCaption("", "c2_2_2.png");
+            var l4 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Step 4{ Environment.NewLine }Click \"Connect\" to set up the network on the D - Link. Advanced Settings"
+            };
+            var cap3 = UIService.CreateImageViewCaption($"Step 5{ Environment.NewLine }Choose \"Configure\" from under Wireless Settings.Click \"Wireless Connection Setup Wizard.\" Click \"Next.\"","c2_2_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"", "c2_2_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"Step 6 { Environment.NewLine }Enter a name for the network into the Wireless Network Name(SSID) field and then choose \"Automatically Assign a Network Key\" from the options.", "c2_2_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"Step 7{ Environment.NewLine }Select \"Use WPA Encryption Instead of WEP,\" for the best security, and then click \"Next.\" Write down the security password shown on - screen and store the password in a secure location.", "c2_2_6.png");
+            var l5 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Step 8 { Environment.NewLine }Click \"Save\" to finish configuring the router.After the router automatically reboots, disconnect the router's Ethernet connection from the computer if desired.Router Other Functions:"
 
 
+            };
+            var cap7 = UIService.CreateImageViewCaption($"⦁	DHCP IP Address Reservation:", "c2_2_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"⦁	MAC Filtering", "c2_2_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"⦁	QOS Quality of Service", "c2_2_9.png");
+            var l6 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"⦁	Router Firewall Function"
+
+            }; 
+            var cap10 = UIService.CreateImageViewCaption($"⦁	Application rules", "c2_2_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"⦁	Web Filtering", "c2_2_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"⦁	Application Filter", "c2_2_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"⦁	Port Filtering", "c2_2_13.png");
+            var l7 = new Label()
+            {
+                TextColor = Color.Black,
+                BackgroundColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Other Functions of Router{ Environment.NewLine }⦁	Port Forwarding - the term port forwarding or port mapping identifies the combined techniques of:{ Environment.NewLine }⦁	translating the address or port number of a packet to a new destination possibly accepting such packet(s) in a packet filter(firewall){ Environment.NewLine }⦁	forwarding the packet according to the routing table{ Environment.NewLine }⦁	The destination may be a predetermined network port(assuming protocols like TCP and UDP, though the process is not limited to these) on a host within a NAT-masqueraded, typically private network, based on the port number on which it was received at the gateway from the originating host."
+            };
+            var cap14= UIService.CreateImageViewCaption($"", "c2_2_14.png");
+            var l8 = new Label()
+            {
+                TextColor = Color.Black,
+                BackgroundColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Types of port forwarding{ Environment.NewLine }⦁	Local port forwarding{ Environment.NewLine }⦁	Remote port forwarding{ Environment.NewLine }⦁	Dynamic port forwarding"
+            };
+            stack.Children.Add(cap1);
+            stack.Children.Add(l1);
+            stack.Children.Add(l2);
+            stack.Children.Add(l3);
+            stack.Children.Add(cap2);
+            stack.Children.Add(l4);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(l5);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(l6);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(l7);
+            stack.Children.Add(cap14);
+            stack.Children.Add(l8);
             return stack;
         }
 
+
+        
         public static StackLayout Core2_3LessonView()
         {
             var stack = new StackLayout();
+            var l1 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"⦁NOTE: Before following any of these steps, make sure wireless is turned on, on the computers between which you are about to create the ad-hoc network."
+            };
 
-
+            var cap1 = UIService.CreateImageViewCaption($"Step 1: Creating the Ad Hoc Wireless Network First, open the Network and Sharing Center.Click on 'Set up a new connection or network'.","c2_3_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"The 'Set Up a Connection or Network' wizard will now start. With it, you can configure all types of connections, from a normal network to a VPN connection to your company network or an ad hoc (computer-to-computer) network. From the list of choices, select 'Set up a wireless ad hoc (computer-to-computer) network', and click Next.", "c2_3_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"You will see a new window which describes the things you can do on a wireless ad hoc network. Read the contents of the window and click Next.", "c2_3_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"Now it is time to set up the network. First, type the network name and then select the security type you want to use. For more security, I recommend you choose WPA2-Personal. It provides better encryption and it is much harder to crack than WEP. Then, type the password you want to use and, in case you want to use this network on other occasions, check the box that says 'Save this network'. When done, click Next.", "c2_3_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"The wizard will now create the network. This activity should take no more than a few seconds.", "c2_3_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"When finished, you will receive a notification that the network has been created and it is ready to use. Make sure you don't forget the password and then click on Close.", "c2_3_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"Your laptop will now broadcast this newly created network and it will wait for other computers to connect.", "c2_3_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"Step 2: Connecting Other Computers to the Network{Environment.NewLine}Now it is time to connect other computers to this network.On the client computer, click the network icon from the notification area and you will see the list of available networks.Select the ad hoc network which you just created and click on Connect.", "c2_3_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"You will be asked to type the password. When done, click on OK.", "c2_3_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"Windows 7 will now take a few seconds to connect to the network.", "c2_3_10.png");
+            var l2 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"When done, the window shown above will be gone and you can now start using the network."
+            };
+            stack.Children.Add(l1);
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(l2);
             return stack;
         }
-
+        //COre 3
         public static StackLayout Core3_1LessonView()
         {
             var stack = new StackLayout();
