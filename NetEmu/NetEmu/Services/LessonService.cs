@@ -666,8 +666,6 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
             return stack;
         }
 
-
-        
         public static StackLayout Core2_3LessonView()
         {
             var stack = new StackLayout();
@@ -712,21 +710,190 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
         public static StackLayout Core3_1LessonView()
         {
             var stack = new StackLayout();
-
-
+            var l1 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"This article provides prerequisites and steps for installing Active Directory Domain Services (AD DS) on Microsoft Windows Server 2008 R2 Enterprise 64-bit (W2K8).{ Environment.NewLine }This article does not provide instructions for adding a Domain Controller(DC) to an already existing Active Directory Forest Infrastructure."
+            };
+            var tt1 = UIService.CreateTitleText($"Prepare for Active Directory", $"Before you install AD DS on a Rackspace Cloud Server running Windows Server 2008 R2 Enterprise 64-bit (W2K8), you must perform the following prerequisite tasks.");
+            var tt2 = UIService.CreateTitleText($"Select Domain Name and Password", $"Select your domain name and know the domain administrator password that you want to use.");
+            var l2 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Note: Your domain name should be reliably unique. Do not use the same domain as your website, for example, and avoid extensions like “.local” unless you have registered that domain name in DNS. We suggest a domain name that is not used for anything else, like \"internal.example.com\".."
+            };
+            var tt3 = UIService.CreateTitleText($"Specify the Preferred DNS Server", $"Windows Server 2008 can properly install and configure DNS during the AD DS installation if it knows that the DNS is local. You can accomplish this by having the private network adapter’s preferred DNS server address point to the already assigned IP address of the same private network adapter, as follows:");
+            var l3 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"⦁	From the Windows Start menu, open Administrative Tools > Server Manager."
+            };
+            var cap1 = UIService.CreateImageViewCaption($"⦁	In the Server Summary section of the Server Manager window, click View Network Connections.", "c3_1_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"⦁	In the Network Connections window, right-click the private adapter and select Properties.", "c3_1_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"⦁	Select Internet Protocol Version 4, and then click Properties.", "c3_1_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"⦁	Copy the IP address that is displayed in the IP address box and paste it into the Preferred DNS server box. Then, click OK.", "c3_1_4.png");
+            var l4 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"⦁	Click OK in the Properties dialog box, and close the Network Connections window."
+            };
+            var l5 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Note: The last step for prepping W2K8 for AD is adding the proper Server Role. The “Active Directory Domain Services” Role will be added. This only installs the framework for W2K8 to become a DC and run AD. It does not promote the server to DC or install AD."
+            };
+            var tt4 = UIService.CreateTitleText($"Add the Active Directory Domain Services Role", $"Adding the Active Directory Domain Services role installs the framework for Windows Server 2008 to become a DC and run AD DS. It does not promote the server to a DC or install AD DS.");
+            var cap5 = UIService.CreateImageViewCaption($"⦁	In the Server Manager window, open the Roles directory and in the Roles Summary section, click Add Roles.", "c3_1_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"⦁	On the Before You Begin page of the Add Roles Wizard, click Next.{ Environment.NewLine }⦁	On the Select Server Roles page, select the Active Directory Domain Services check box, and then click Next on this page and on the Confirmation page.", "c3_1_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"⦁	On the Installation Progress page, click Install. ", "c3_1_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"⦁	On the Results page, after the role is successfully added, click Close.", "c3_1_8.png");
+            var tt5 = UIService.CreateTitleText($"Enable the Remote Registry", $"⦁	Open the Server Manager window if it is not already open. { Environment.NewLine }⦁	In the Properties area of the Local Servers page, click Remote Management.{ Environment.NewLine }⦁	Select the Enable remote management of this server from other computers check box.");
+            var tt6 = UIService.CreateTitleText($"Add the Active Directory Domain Services Role", $"Now that you have prepared the server, you can install AD DS.");
+            var l6 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Tip: As an alternative to performing steps 1 through 3, you can type dcpromo.exe at the command prompt. Then, skip to step 4."
+            };
+            var cap9 = UIService.CreateImageViewCaption($"⦁	If it is not already open, open the Server Manager window.{ Environment.NewLine }⦁	Select Roles > Active Directory Domain Services.{ Environment.NewLine }⦁	In the Summary section, click Run the Active Directory Domain Services Installation Wizard(dcpromo.exe).or Open RUN and Type DCPROMO", "c3_1_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"⦁	On the Welcome page of the Active Directory Domain Services Installation Wizard, ensure that the Use advanced mode installation check box is cleared, and then click Next. ", "c3_1_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"⦁	On the Operating System Capability page, click Next.", "c3_1_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"⦁	On the Choose a Deployment Configuration page, select Create a new domain in a new forest and then click Next.", "c3_1_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"⦁	On the Name the Forest Root Domain page, enter the domain name that you choose during preparation steps. Then, click Next.", "c3_1_13.png");
+            var cap14 = UIService.CreateImageViewCaption($"⦁	After the installation verifies the NetBIOS name, on the Set Forest Functional Level page, select Windows Server 2008 R2 in the Forest function level list. Then, click Next.", "c3_1_14.png");
+            var l7 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"The installation examines and verifies your DNS setting."
+            };
+            var cap15 = UIService.CreateImageViewCaption($"⦁	On the Additional Domain Controller Options page, ensure that the DNS server check box is selected, and then click Next. ", "c3_1_15.png");
+            var cap16 = UIService.CreateImageViewCaption($"⦁	In the message dialog box that appears, click Yes.", "c3_1_16.png");
+            var cap17 = UIService.CreateImageViewCaption($"⦁	On the Location for Database, Log Files, and SYSVOL page, accept the default values and then click Next. ", "c3_1_17.png");
+            var cap18 = UIService.CreateImageViewCaption($"⦁	On the Directory Services Restore Mode Administrator Password page, enter the domain administrator password that you chose during the preparation steps. This is not your admin password that was emailed to you during the creation of your server, although you can use that password if you want to. Then, click Next.", "c3_1_18.png");
+            var cap19 = UIService.CreateImageViewCaption($"⦁	On the Summary page, review your selections and then click Next.The installation begins.", "c3_1_19.png");
+            var cap20 = UIService.CreateImageViewCaption($"⦁	If you want the server to restart automatically after the installation is completed, select the Reboot on completion check box.", "c3_1_20.png");
+            var cap21 = UIService.CreateImageViewCaption($"⦁	If you did not select the Reboot on completion check box, click Finish in the wizard. Then, restart the server. ", "c3_1_21.png");
+            var l8 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"The installation examines and verifies your DNS setting."
+            };
+            var l9 = new Label()
+            {
+                TextColor = Color.Black,
+                LineBreakMode = LineBreakMode.WordWrap,
+                BackgroundColor = Color.White,
+                Text = $"⦁	To log in, perform the following steps:{ Environment.NewLine }a.Click Switch User, and then click Other User.{ Environment.NewLine }b.For the user,enter the full domain name that you chose, followed by a back slash and Administrator(for example, Example.com\\Administrator).{ Environment.NewLine }c.Enter the password that was emailed to you when you first built the server.If you changed your passwordfor the local admin account to this server before you began the installation of Active Directory Domain Services, use that password.{ Environment.NewLine }d.Click the log in button."
+            };
+            var l10 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"The installation of Active Directory Domain Services on your server is complete."
+            };
+            stack.Children.Add(l1);
+            stack.Children.Add(tt1);
+            stack.Children.Add(tt2);
+            stack.Children.Add(l2);
+            stack.Children.Add(tt3);
+            stack.Children.Add(l3);
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(l4);
+            stack.Children.Add(l5);
+            stack.Children.Add(tt4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(tt5);
+            stack.Children.Add(tt6);
+            stack.Children.Add(l6);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(cap14);
+            stack.Children.Add(l7);
+            stack.Children.Add(cap15);
+            stack.Children.Add(cap16);
+            stack.Children.Add(cap17);
+            stack.Children.Add(cap18);
+            stack.Children.Add(cap19);
+            stack.Children.Add(cap20);
+            stack.Children.Add(cap21);
+            stack.Children.Add(l8);
+            stack.Children.Add(l9);
+            stack.Children.Add(l10);
             return stack;
         }
         public static StackLayout Core3_2LessonView()
         {
             var stack = new StackLayout();
+            var cap1 = UIService.CreateImageViewCaption($"To start first need to log in to the server with administrator privileges. Then start the “server Manager” by clicking on “Server Manager” icon on task bar. Then go to “Roles”","c3_2_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"Then click on “Add Roles” option to open Add roles Wizard.", "c3_2_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"Then it will load the Roles Wizard and select the “DHCP Server” From the list and click next to continue.", "c3_2_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"Then it will give description about the role. Click next to continue.", "c3_2_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"Next window is asking to use which interface to serve DHCP clients. If server has multiple NIC with multiple IP you can add them also to serve DHCP clients.", "c3_2_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"In next window it will give opportunity to add DNS settings that should apply for DHCP clients.", "c3_2_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"Next window is to define the WINS server details.", "c3_2_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"In next window we can add the scope, the Starting IP, End IP of the DHCP range, subnet mask, default gateway, leased time etc.", "c3_2_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"In next Window it can configure to support IPv6 as well.", "c3_2_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"Then it will give the confirmation window before begin the install. Click on “Install”", "c3_2_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"Once installation finishes DHCP server interface can open from Start > Administrative Tools > DHCP", "c3_2_11.png");
+            var l1 = new Label()
+            {
+                TextColor = Color.White,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"Using the DHCP it is possible to even configure multiple Scopes configurations to the network. In a network there can be different network segments. It is waste to setup different DHCP servers for each segment. Instead of that it is possible to create different Scopes to issue DHCP for them."
+            };
 
-
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(l1);
             return stack;
         }
         public static StackLayout Core3_3LessonView()
         {
             var stack = new StackLayout();
-
+            var l1 = UIService.CreateTextItem($"You probably already know that a User Account in Active Directory is an Active Directory Object, or simply said, a record in an AD database. Most of the time we create user accounts for people, however user accounts can also be created for applications or processes.",Color.White,Color.Transparent);
+            var l2 = UIService.CreateTextItem($"User accounts allow a person to access resources on a network. But we can just as easily deny access to certain resources on the network through the user account. That’s why, User Account Objects are quite important and very useful.", Color.White, Color.Transparent);
+            var l3 = UIService.CreateTextItem($"User Groups and Organizational Units. Now, let’s get started with creating a user account.", Color.White, Color.Transparent);
+            var l4 = UIService.CreateTextItem($"How To Create a New User Account in Active Directory", Color.White, Color.Transparent);
+            var cap1 = UIService.CreateImageViewCaption($"1. To start let’s go ahead and open up Server Manager","c3_3_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"2. Next we will open up the Roles section, next to Active Directory Users and Computers section and finally the Active Directory Users and Computers. You should now see your domain name.", "c3_3_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"3. We are going to click on our Users section where we are going to create a new User Account. To do so, right-click on the blank section, point to New and select User", "c3_3_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"4. In this window you need to type in the user’s first name, middle initial and last name. Next you will need to create a user’s logon name.{ Environment.NewLine } In our example we are going to create a user account for Billy Miles and his logon name will be bmiles.When done, click on the Next button", "c3_3_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"5. In the next window you will need to create a password for your new user and select appropriate options.{ Environment.NewLine } In our example we are going to have the user change his password at his next logon.You can also prevent a user from changing his password, set the password so that it will never expire or completely disable the account.{ Environment.NewLine } When you are done making your selections, click the Next button.", "c3_3_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"6. And finally, click on the Finish button to complete the creation of new User Account.", "c3_3_6.png");
+            var tt1 = UIService.CreateTitleText($"How To Create a User Template in Active Directory",$"A user template in Active Directory will make your life a little easier, especially if you are creating users for a specific department, with exactly the same properties, and membership to the same user groups. A user template is nothing more than a disabled user account that has all these settings already in place. The only thing you are doing is copying this account, adding a new name and a password.{Environment.NewLine } You may have multiple user templates for multiple purposes with different settings and properties.There is no limit on the number of user templates, but keep in mind that they are there to help you, not to confuse you, so keep in mind less is better.{ Environment.NewLine } To create a user template, we are going to create a regular user account just like we did above.A little note here, you may want to add an * as the first character of the name so it floats at the top in AD and is much easier to find.");
+            var cap7 = UIService.CreateImageViewCaption($"1. To start out, right-click on the empty space, point to new, and select User.", "c3_3_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"2. Type in the user’s name (with asterisks if so desired) and click Next.", "c3_3_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"3. Create the template’s password and do not forget to check the box next to the Account is disabled option. When ready, click Next.", "c3_3_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"4. Once the account is created, you can go ahead and add all the properties you need for that template. To do so, double-click on that account and navigate to a specific tab. Once done click OK.", "c3_3_10.png");
+            var l5 = UIService.CreateTextItem($"How To Use a User Template in Active Directory", Color.White, Color.Transparent);
+            var cap11 = UIService.CreateImageViewCaption($"1. Now in order to use that user template, we are going to select it, copy it and add the unique information such as user name, password, etc.{Environment.NewLine } We can do that for as many users as needed.Let’s start by right - clicking on the template and selecting Copy", "c3_3_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"2. Next we are going to enter the user’s name, login and password information while making sure the checkbox next to Account is disabled is unchecked.", "c3_3_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"3. Once we finish, our new user account is created with all the properties of the template account. Now wasn’t that easy!", "c3_3_13.png");
 
             return stack;
         }

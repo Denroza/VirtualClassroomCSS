@@ -421,4 +421,67 @@
   <ItemGroup>
     <BundleResource Include="Resources\c2_1_8.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\c3_1_21.png" />
+  </ItemGroup>
 </Project>

@@ -116,5 +116,31 @@ namespace NetEmu.Services
 
             return stack;
         }
+        public static StackLayout CreateTitleText(string title, string text)
+        {
+            var stack = new StackLayout();
+            stack.Spacing = 0;
+            var label = new Label() { Text = title, TextColor = Color.White, FontAttributes = FontAttributes.Bold };
+
+            var label1 = new Label() { Text = text, TextColor = Color.White, LineBreakMode = LineBreakMode.WordWrap };
+            stack.Children.Add(label);
+
+            stack.Children.Add(label1);
+
+
+            return stack;
+        }
+
+        public static Label CreateTextItem(string text,Color textColor, Color bgColor) {
+            
+            var l1 = new Label()
+            {
+                TextColor = textColor,
+                BackgroundColor = bgColor,
+                LineBreakMode = LineBreakMode.WordWrap,
+                Text = $"{text}"
+            };
+            return l1;
+        }
     }
 }
