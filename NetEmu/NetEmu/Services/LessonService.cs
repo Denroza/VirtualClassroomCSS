@@ -1,9 +1,12 @@
 ﻿using CocosSharp;
 using NetEmu.Models;
+using PdfSharp.Xamarin.Forms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace NetEmu.Services
 {
@@ -895,6 +898,25 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
             var cap12 = UIService.CreateImageViewCaption($"2. Next we are going to enter the user’s name, login and password information while making sure the checkbox next to Account is disabled is unchecked.", "c3_3_12.png");
             var cap13 = UIService.CreateImageViewCaption($"3. Once we finish, our new user account is created with all the properties of the template account. Now wasn’t that easy!", "c3_3_13.png");
 
+            stack.Children.Add(l1);
+            stack.Children.Add(l2);
+            stack.Children.Add(l3);
+            stack.Children.Add(l4);
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(tt1);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(l5);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
             return stack;
         }
         public static StackLayout Core3_4LessonView()
@@ -907,22 +929,217 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
         public static StackLayout Core3_5LessonView()
         {
             var stack = new StackLayout();
-
-
+            var cap1 = UIService.CreateImageViewCaption($"Step 1: Begin the installation{ Environment.NewLine } Launch Server Manager, and select \"roles.\" Once the roles manager screen is up, check the box for Remote Desktop Services ",$"c3_5_1.png");
+            var cap2 = UIService.CreateImageViewCaption($" After clicking Next, you should see an introduction to Remote Desktop Services ", $"c3_5_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"Step 2: Select Remote Desktop Services roles you want to install{ Environment.NewLine }Remote Desktop Services(RDS) includes several components. These components can be on one machine or many.Let's take a look at each of them.{ Environment.NewLine }⦁	Remote Desktop Session Host: This is the new name of Terminal Server.{ Environment.NewLine }⦁	Remote Desktop Virtualization Host: This component integrates with Hyper - V.This allows for the pooling of virtual machines on Hyper-V to be used for virtual desktops.{ Environment.NewLine }⦁	Remote Desktop Connection Broker: This component is used to bridge the user with a virtual desktop, remote application or Terminal Server session.{ Environment.NewLine }⦁	Remote Desktop Licensing: This is the new name of Terminal Server licensing server that also includes licensing for Microsoft's Virtual Desktop Infrastructure (VDI).{ Environment.NewLine }⦁	Remote Desktop Gateway: This provides a single connection point for clients to connect to a specific virtual desktop, remote app or Terminal Server session.{ Environment.NewLine }⦁	Remote Desktop Web Access: This provides clients an interface to access their virtual desktop, remote app or Terminal Server sessions.", $"c3_5_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"Step 3: Pick the license mode{ Environment.NewLine }As with past Terminal Server licensing, there are two license options: per device and per user ", $"c3_5_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"Step 4: Allowing access to Terminal Server (not required){ Environment.NewLine }Select which users to give access to the local terminal services.This component is not required for RDS to work.If you choose to install \"Remote Desktop Session Host\" as I have, you will get this prompt ", $"c3_5_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"Step 5: Configure the client experience{ Environment.NewLine }The next screen is \"Configure Client Experience\".This is where you set the defaults for the experience the end user will have with the VDI system.", $"c3_5_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"Step 6: Configure license scope { Environment.NewLine }Just as with Terminal Server of the past, you can configure the scope of the license server.You have the following two options:{ Environment.NewLine }⦁	Domain: This limits the licensing to only servers in the domain.{ Environment.NewLine }⦁	Forest: This allows any Terminal Server in the forest to attain a license.", $"c3_5_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"Step 7: Assigning the SSL certificate for Remote Desktop Gateway (see Figure 8){ Environment.NewLine }The Remote Desktop Gateway uses Secure Sockets Layer(SSL) to tunnel and encrypt traffic from the client.This functionality requires a certificate.There are two options for certificates:{ Environment.NewLine }⦁	Specify a certificate from the certificate store.{ Environment.NewLine }⦁	Produce a self - signed certificate.{ Environment.NewLine }In either case, the client must trust the certificate", $"c3_5_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"Step 8: Configure network access protection (optional){ Environment.NewLine } These next few screens go beyond the scope of RDS but are related, so I will just cover the basics.{ Environment.NewLine }Create authorization policies{ Environment.NewLine }I skipped this part because it is beyond this article's scope. This is where you would configure a policy that states who is allowed to use the Remote Desktop Gateway.", $"c3_5_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"nstall and configure network access and protection policies { Environment.NewLine }This is used to configure and enforce network access polices such as IPsec and network access protection from the client.This feature can also be used to define different policies based on users' connectivity (dial-up or virtual private network).", $"c3_5_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"", $"c3_5_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"Step 9: Install IIS and Remote Desktop Web Access{ Environment.NewLine }Remote Desktop Web Access requires Internet Information Services(IIS), so the next two screens are for installing and configuring IIS.this image is an overview screen, while the next is the configuration screen.", $"c3_5_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"", $"c3_5_13.png");
+            var cap14 = UIService.CreateImageViewCaption($"Step 10: The final steps{ Environment.NewLine }At this point, you're done. The last two screens just let you know what you're installing, and a final screen lets you know whether any additional steps like rebooting are required", $"c3_5_14.png");
+            var cap15 = UIService.CreateImageViewCaption($"", $"c3_5_15.png");
+            var l1 = UIService.CreateTextItem($"Now that you have installed and configured RDS, you can start using Terminal Services and Remote Desktop Gateway Manager. ",Color.White,Color.Transparent);
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(cap14);
+            stack.Children.Add(cap15);
+            stack.Children.Add(l1);
+            
             return stack;
         }
         public static StackLayout Core3_6LessonView()
         {
             var stack = new StackLayout();
 
+            var cap1 = UIService.CreateImageViewCaption($"Open \"Server Manager\" and click \"Add Role\". Select \"File Services\" from the Server role list.", $"c3_6_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"", $"c3_6_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"", $"c3_6_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"", $"c3_6_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"", $"c3_6_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"", $"c3_6_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"", $"c3_6_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"", $"c3_6_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"", $"c3_6_9.png");
+            var l1 = UIService.CreateTextItem($"Now create a Folder and share it with below permissions.{ Environment.NewLine } Share name: UserData$ (You can hide the share using the dollar sign($) at the end of the share name)",Color.White,Color.Transparent);
+            var cap10 = UIService.CreateImageViewCaption($"Administrators: Full Control{ Environment.NewLine }System: Full Control{ Environment.NewLine }Authenticated Users: Full Control", $"c3_6_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"Security settings{ Environment.NewLine }Group: Authenticated Users{ Environment.NewLine }Type: Allow{ Environment.NewLine }Applies to: This folder only{ Environment.NewLine }{ Environment.NewLine }Permissions:{ Environment.NewLine }Traverse folder / execute file{ Environment.NewLine }List folder / read data{ Environment.NewLine }Read attributes{ Environment.NewLine }Read extended attributes{ Environment.NewLine }Read permissions", $"c3_6_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"", $"c3_6_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"Create a Quota Template.", $"c3_6_13.png");
+            var cap14 = UIService.CreateImageViewCaption($"", $"c3_6_14.png");
+            var cap15 = UIService.CreateImageViewCaption($"", $"c3_6_15.png");
+            var cap16 = UIService.CreateImageViewCaption($"", $"c3_6_16.png");
+            var cap17 = UIService.CreateImageViewCaption($"", $"c3_6_17.png");
+            var cap18 = UIService.CreateImageViewCaption($"", $"c3_6_18.png");
+            var cap19 = UIService.CreateImageViewCaption($"", $"c3_6_19.png");
+            var cap20 = UIService.CreateImageViewCaption($"", $"c3_6_20.png");
+            var cap21 = UIService.CreateImageViewCaption($"", $"c3_6_21.png");
+            var cap22 = UIService.CreateImageViewCaption($"Attach to a User's profile.", $"c3_6_22.png");
+            var cap23 = UIService.CreateImageViewCaption($"", $"c3_6_23.png");
+            var cap24 = UIService.CreateImageViewCaption($"", $"c3_6_24.png");
 
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(l1);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(cap14);
+            stack.Children.Add(cap15);
+            stack.Children.Add(cap16);
+            stack.Children.Add(cap17);
+            stack.Children.Add(cap18);
+            stack.Children.Add(cap19);
+            stack.Children.Add(cap20);
+            stack.Children.Add(cap21);
+            stack.Children.Add(cap22);
+            stack.Children.Add(cap23);
+            stack.Children.Add(cap24);
             return stack;
+        }
+
+        private static Dictionary<string, string> C3_7T1 {
+            get {
+                return new Dictionary<string, string>()
+                {
+                    { "Option","Description" },
+                    { $"Print{Environment.NewLine}Server",$"Installs the print server and Print Management console. This is a prerequisite for configuring print services on Windows Server 2008." },
+                    { $"LDP{Environment.NewLine}Service",$"Installs the TCP/IP Line Printer Daemon Service (LPDSV) allowing UNIX, Linux and other Line Printer Remote (LPR0) based computers to print via the print server. This setting also opens port in the Windows Firewall." },
+                    { $"Internet Printing",$"Creates an Internet Information Service (IIS) hosted web site where users can manage printers and connect and print to shared printers hosted in the server using the Internet Printing Protocol (IPP). The default URL for the web site is http://servername/Printers, where servername is the name of the server running the print services." },
+                }; }
         }
         public static StackLayout Core3_7LessonView()
         {
+            // var l2 = UIService.CreateTextItem($"", Color.White, Color.Transparent); template
+            //var tt1 = UIService.CreateTitleText($"",  $"");
             var stack = new StackLayout();
+            var l1 = UIService.CreateTextItem($"The first step in setting up a Windows Server 2008 print server is to install the Print Server role. This is achieved by launching the Server Manager, selecting Roles item from the tree in the left pane and clicking on Add Roles. In the Add Roles Wizard click next on the Welcome screen if one appears and then select the Print Services option. Click Next and read the information displayed before clicking Next once again to proceed to the Select Role Services screen. On this screen a number of different service options are available for selection and installation as outlined in the following table:",Color.White,Color.Transparent);
+            var gridT = new Grid();
+            #region grid init
+            gridT.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1,GridUnitType.Auto) });
+            gridT.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+
+            gridT.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            gridT.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            gridT.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            #endregion
+            int ctr1 = 0,ctr2 =0;
+            for(int col = 0; col <2; col++) {
+                for (int row = 0; row < 3; row++) {
+                    if (col == 0)
+                    {
+                        var op = UIService.CreateTextItem(C3_7T1.Keys.ToList()[ctr1], Color.Black, Color.White);
+                        gridT.Children.Add(op,col,row);
+                        ctr1++;
+                    }
+                    else {
+                        var des = UIService.CreateTextItem(C3_7T1.Values.ToList()[ctr2], Color.Black, Color.White);
+                        gridT.Children.Add(des, col, row);
+                        ctr2++;
+                    }
+
+                }   
+             }
+            var l2 = UIService.CreateTextItem($"With the required options selected, click Next. Note that if Internet Printing was selected and the IIS role is not currently installed in the server, the wizard will prompt to add additional roles. If prompted, click on the Add Required Role Services button to proceed. Click Next on any information pages that may be displayed until the Confirmation screen appears. After reviewing the summary information provided, click Install to initiate the installation process.", Color.White, Color.Transparent);
+            var l3 = UIService.CreateTextItem($"Print Services Management Tools", Color.Black, Color.Transparent,FontAttributes.Bold);
+            var l4 = UIService.CreateTextItem($"Once print services are installed a number of print management tools are now available on the system. First and foremost is the Print Management snap-in which may be accessed via Start -> All Programs -> Administrative Tools -> Print Management. A useful command-line tool is also available in the form of the Print Backup Recovery Migration tool. The executable is named Printbrm.exe and is located in %SystemRoot%\\System32\\Spool\\Tools.", Color.White, Color.Transparent);
+            var l5 = UIService.CreateTextItem($"A number of useful VBscript tools are also available in %SystemRoot%\\System32\\Printing_Admin_Scripts\\en-US (note that if you use a language other than en-US the path will need to be change accordingly). Scripts are available for configuring printer settings (prncfg.vbs), listing and managing printer drivers (prndrvr.vbs), managing print jobs (prnjobs.vbs), managing print queues (prnQctl.vbs), publishing printers to active directory (pubprn.vbs), installing and managing printers (prnmngr.vbs) and for managing TCP/IP printer ports (prnport.vbs).", Color.White, Color.Transparent);
+            var tt1 = UIService.CreateTitleText($"The scripts are executed using the cscript.exe command and when run without any command-line options will display a list of supported options. For example:",
+                $"cscript prnjobs.vbs{Environment.NewLine }{Environment.NewLine }Microsoft(R) Windows Script Host Version 5.7{Environment.NewLine }Copyright(C) Microsoft Corporation.All rights reserved.{ Environment.NewLine }{Environment.NewLine }Usage: prnjobs[-zmxl ?][-s server][-p printer][-j jobid][-u user name][-w password]{ Environment.NewLine }{Environment.NewLine }Arguments:{Environment.NewLine }-j - job id{Environment.NewLine }- l - list all jobs{Environment.NewLine }-m - resume the job{Environment.NewLine }-p - printer name{Environment.NewLine }- s - server name{Environment.NewLine }- u - user name{Environment.NewLine }- w - password{Environment.NewLine }- x - cancel the job{Environment.NewLine }-z - pause the job{Environment.NewLine }-? -display command usage { Environment.NewLine }{Environment.NewLine } Examples:{Environment.NewLine }prnjobs - z - p printer - j jobid{Environment.NewLine }prnjobs - l - p printer{Environment.NewLine }prnjobs - l");
+            var l6 = UIService.CreateTextItem($"Adding Network Printers to the Print Server using Auto-detect", Color.Black, Color.Transparent, FontAttributes.Bold);
+            var l7 = UIService.CreateTextItem($"Obviously, a print server without any printers isn't going to be of much use. Not surprisingly, therefore, the next step after installing Print Services is to add printers. Printers may either be network based, or locally connected to the server. In the case of network printers, these may be added either manually or using auto-detection. Under auto-detection, Print Management scans the subnet on which the server resides and searches for any devices it can identify as being printers. As printers are detected on the network they are displayed in a list here they may be selected and added to the print server.", Color.White, Color.Transparent);
+            var cap1 = UIService.CreateImageViewCaption($"To add network printers using auto-detection, open the Print Management tool via Start -> All Programs -> Administrative Tools -> Print Management, unfold the Print Servers from the list in the left pane, right click the local or remote print server to which the new printer is to be added and select Add Printer.... This will display the Network Printer Installation Wizard as illustrated below:",$"c3_7_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"In order to have the wizard search for printers on the network, ensure that the Search for network printers is selected and click on Next. At this point the wizard will begin the process of scanning the network for printers. As each printer is detected it will be listed. In the following example, the wizard has detected an HP Deskjet 5800 printer on the network with an IP address of 192.168.2.10:", $"c3_7_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"If no printers are detected, ensure that the printers are connected to the network and powered on and are on the same subnet as the print server. Once the scan is complete, select the required printer from the list and click Next to proceed to the Printer Driver screen. If a driver for the printer is already installed, select it from the drop down list. Alternatively select the Install a new driver option and click Next to proceed to the Printer Installation screen where a list of printer manufacturers and models is presented. Select the make and model of the printer from the list:", $"c3_7_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"If the make and model of printer are not listed, check to see if the printer was supplied with a driver disk, or whether a driver can be obtained from the manufacturer's web site. Assuming this to be the case, use the Have Disk button to browse for and select the appropriate manufacturer driver. With either a printer selected from the list, or a suitable driver specified, click on Next to configure thePrinter Name and Share Settings. On this screen, enter the name by which the new printer will be shared to clients over the network. If the printer is not to be shared, ensure that the Share this printeris not selected. Also, enter a location description (for example, \"Printer in Accounts\") and comment if desired. Click Next to display the printer summary screen as illustrated below where the selected settings are presented for review:", $"c3_7_4.png");
+            var l8 = UIService.CreateTextItem($"Assuming the configuration summary is correct, click Next to install the new printer. At this point the wizard will report that the driver has been successfully installed and that a test page is ready to be printed. If another printer is to be added to the print server, select the Add Another Printer option to instruct the wizard to loop back to the start of the installation process.", Color.White, Color.Transparent);
+            var l9 = UIService.CreateTextItem($"Manually Adding Network Printers to a Print Server", Color.Black, Color.Transparent, FontAttributes.Bold);
+            var cap5 = UIService.CreateImageViewCaption($"The preceding section discussed the use of auto-detection to locate and install and network attached printer. This section will cover the manual installation of a network printer. As with auto-detection, begin by invoking the Print Management tool (Start -> All Programs -> Administrative Tools -> Print Management), unfold the Print Servers category from the list in the left pane, right click the local or remote print server to which the new printer is to be added and select Add Printer.... This will launch the Network Printer Installation Wizard. On the initial page of the wizard select the option labeledAdd a TCP/IP or Web Services Printer by IP address or hostname and click Next to proceed to the Printer Address screen. If the type of printer is known (TCP/IP device or Web Services Printer) make the appropriate selection. Alternatively, leave the setting as Auto Detect to have the wizard identify the printer type. Enter the IP address or hostname of the printer to be added to the print server. The wizard will automatically generate a unique port name to accompany the IP address or hostname. The option is also provided to have the wizard attempt to identify the appropriate driver for the new printer. The following figure illustrates the screen as described:", $"c3_7_5.png");
+            var l10 = UIService.CreateTextItem($"Click Next to install a printer driver. If a driver for the printer is already installed on the print server, select it from the drop down list. Alternatively select the Install a new driver option and click Next to proceed to the Printer Installation screen where a list of printer manufacturers and models is presented. Select the make and model of the printer from the list, or use the Have Disk to install the manufacturer supplied driver.", Color.White, Color.Transparent);
+            var l11 = UIService.CreateTextItem($"With either a printer selected, click on Next to configure the Printer Name and Share Settings. On this screen, enter the name by which the new printer will be shared to clients over the network. If the printer is not to be shared, ensure that the Share this printer is not selected. Also, enter a location description (for example, \"Color Printer in Sales\") and comment if desired. Click Next to perform the installation and print an optional test page.", Color.White, Color.Transparent);
+            var l12 = UIService.CreateTextItem($"Adding a Locally Connected Printer", Color.Black, Color.Transparent, FontAttributes.Bold);
+            var l13 = UIService.CreateTextItem($"Since servers are generally sequestered in climate controlled server room and printers are located in proximity to the users it always seems a little odd to talk about installing printers with are locally connected to servers. That said, it is a topic which needs to covered, and cover it we will.", Color.White, Color.Transparent);
+            var cap6 = UIService.CreateImageViewCaption($"Local printers will be connected to the server using a serial (COM) port, a parallel (LPT) port or a Universal Serial Bus (USB) port. Often, Windows will automatically detect a new printer as soon as it is connected and powered up. In this situation an icon will appear in the task bar indicating that the new device has been detected. Clicking on this icon presents the option to view details about the installation process, resulting in the appearance of a dialog similar to the one illustrated below, where a Brother MFC-420CN printer has been detected and is being installed:", $"c3_7_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"Once the printer has been installed, it will likely need to be configured for network sharing. To achieve this, launch the Print Management tool, select the print server to which the printer is physically connected and click on Printers. The center pane of the tool will display a list of printers installed on the current print server. Identify the required printer in the list, double click on it to display the properties dialog and select the Sharing tab:", $"c3_7_7.png");
+            var l14 = UIService.CreateTextItem($"If the printer is to be shared with network client, set the Share this printer check box and enter a suitable share name for the printer. This page also allows Client-side Rendering(CSR) to be configured. When selected, all rendering of print jobs is performed on the client and just the RAW print data sent to the server for printing. This offloads the rendering overhead to the client computers, thereby reducing the load, and increasing the scalability of the print server.", Color.White, Color.Transparent);
+            var l15 = UIService.CreateTextItem($"If Windows fails to auto-detect the printer it may be added manually from Print Management by right clicking on the print server to which the device is attached and selecting Add Printer.... On the initial screen select the Add new printer using an existing port and choose the port to which the printer is connected from the drop down list. Once selected, click Next to install a printer driver. If one is already installed, select it from the drop down next to the use an existing printer driver on the computer. Alternatively, select Install a new printer driver and either select the printer make and model from the list, or use the Have Disk to install the manufacturer supplied driver. Click Next to proceed to the Printer Name and Sharing screen. Choose whether the printer is to be shared and, if so, by what name. Proceed to the summary screen, review the information and complete the installation.{ Environment.NewLine } With a printer server configured and printers added the next step is to cover the management of printer servers on Windows Server 2008.", Color.White, Color.Transparent);
+            var l16 = UIService.CreateTextItem($"INSTALL PRINTER SERVER USING DEDICATED PRINTER SERVER", Color.Black, Color.Transparent, FontAttributes.Bold);
+            var cap8 = UIService.CreateImageViewCaption($"We are using TP-link TL-PS110UPrinter server the default IP is 192.168.0.10", $"c3_7_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"Setup the Printer Server {Environment.NewLine}Edit the Printer Server Name", $"c3_7_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"Setup the TCP/IP Address to your desired IP", $"c3_7_10.png");
+            var tt2 = UIService.CreateTitleText($"HERE ARE THE STEPS FOR THE RESETTING THE PRINTER SERVER.", 
+                $"1.      Unplug the power adapter of print server;{ Environment.NewLine}2.Press the Reset key on the print server and hold;{ Environment.NewLine}3.Plug -in the power adapter with the Reset key pressing for no less than 7 seconds;{ Environment.NewLine}4.Release the Reset key.{ Environment.NewLine}For TL-WPS510U, when the Wireless LED light flashes regularly, the TL-WPS510U has finished the resetting and you can see the WLAN-PS Ad - Hoc network in your wireless network list.");
+            var l17 = UIService.CreateTextItem($"HOW TO INSTALL PRINTER USING TCP/IP PORT.", Color.Black, Color.Transparent, FontAttributes.Bold);
+            var cap11 = UIService.CreateImageViewCaption($"The following steps illustrate how to install a network printer using TCP/IP in Windows 7. In order to complete the steps you will need to know details such as the printer model and IP address. Click the Start button, type print in the Search programs and files box and click Add a printer", $"c3_7_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"⦁	Choose Add a local printer", $"c3_7_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"⦁	Click the bullet which says Create a new port and use the drop down menu to choose Standard TCP/IP Port ", $"c3_7_13.png");
+            var cap14 = UIService.CreateImageViewCaption($"⦁	Click Next{Environment.NewLine}⦁	In the Hostname or IP Address field enter the IP Address for the printer you are adding{Environment.NewLine}Instuctions⦁	 for looking up your IP Address(authentication required)", $"c3_7_14.png");
+            var cap15 = UIService.CreateImageViewCaption($"⦁	Click Next{ Environment.NewLine}⦁	Choose the driver that corresponds to your printer model(or click the Have Disk button to search for downloaded drivers)", $"c3_7_15.png");
+            var cap16 = UIService.CreateImageViewCaption($"⦁	Click Next{ Environment.NewLine}⦁	Click the bullet beside Use the driver that is currently installed (recommended)", $"c3_7_16.png");
+            var l18 = UIService.CreateTextItem($"⦁	Click Next{ Environment.NewLine}⦁	Take note of the name given to the printer{ Environment.NewLine}⦁	Click Next{ Environment.NewLine}⦁	Make sure the bullet is selected beside Do not share this printer{ Environment.NewLine}⦁	Click Next{ Environment.NewLine}⦁	Click to put a check mark beside of Set as the default printer(if you do wish to make it your default printer){ Environment.NewLine}⦁	Click the Print a test page button(if you wish to do so){ Environment.NewLine}⦁	Click Finish. Your printer should now be set up and ready to use.", Color.White, Color.Transparent);
 
 
+            stack.Children.Add(l1);
+            stack.Children.Add(gridT);
+            stack.Children.Add(l2);
+            stack.Children.Add(l3);
+            stack.Children.Add(l4);
+            stack.Children.Add(l5);
+            stack.Children.Add(tt1);
+            stack.Children.Add(l6);
+            stack.Children.Add(l7);
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(l8);
+            stack.Children.Add(l9);
+            stack.Children.Add(cap5);
+            stack.Children.Add(l10);
+            stack.Children.Add(l11);
+            stack.Children.Add(l12);
+            stack.Children.Add(l13);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(l14);
+            stack.Children.Add(l15);
+            stack.Children.Add(l16);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(tt2);
+            stack.Children.Add(l17);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(cap14);
+            stack.Children.Add(cap15);
+            stack.Children.Add(cap16);
+            stack.Children.Add(l18);
             return stack;
         }
         public static StackLayout Core3_8LessonView()

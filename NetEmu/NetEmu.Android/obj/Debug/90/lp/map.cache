@@ -4,6 +4,7 @@ CocosSharp.Forms
 FormsViewGroup
 Lidgren.Network
 MonoGame.Framework
+PdfSharp.Xamarin.Forms.Android
 Plugin.CurrentActivity
 Rg.Plugins.Popup
 Xamarin.Android.Arch.Core.Common

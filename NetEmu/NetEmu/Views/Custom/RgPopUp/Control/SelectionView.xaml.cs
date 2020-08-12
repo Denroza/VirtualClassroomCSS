@@ -34,6 +34,7 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
         public SelectionView(CoreIdentity core)
         {
             InitializeComponent();
+            int i = 1;
             switch (core) {
                 case CoreIdentity.Core1:
                     this.WidthRequest = Screen.GameWidth / 1.05f;
@@ -42,10 +43,11 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                     foreach (var items in LessonService.Core1Lessons) {
                         var view = new LessonItem() {
                          LessonType = items.LessonTitle ,
-                       
+                           CoreIdentityGuid = $"Activity {i}",
                          Lesson = items
                          
                         };
+                        i++;
                         SubjectList.Children.Add(view);
                     }
                     break;
@@ -57,9 +59,10 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                         var view = new LessonItem()
                         {
                             LessonType = items.LessonTitle,
-                          
+                            CoreIdentityGuid = $"Activity {i}",
                             Lesson = items
                         };
+                        i++;
                         SubjectList.Children.Add(view);
                     }
                     break;
@@ -71,9 +74,10 @@ namespace NetEmu.Views.Custom.RgPopUp.Control
                         var view = new LessonItem()
                         {
                             LessonType = items.LessonTitle,
-                         
+                            CoreIdentityGuid = $"Activity {i}",
                             Lesson = items
                         };
+                        i++;
                         SubjectList.Children.Add(view);
                     }
                     break;

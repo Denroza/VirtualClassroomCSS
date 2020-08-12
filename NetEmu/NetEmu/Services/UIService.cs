@@ -131,14 +131,16 @@ namespace NetEmu.Services
             return stack;
         }
 
-        public static Label CreateTextItem(string text,Color textColor, Color bgColor) {
+        public static Label CreateTextItem(string text,Color textColor, Color bgColor, FontAttributes font = FontAttributes.None) {
             
             var l1 = new Label()
             {
                 TextColor = textColor,
                 BackgroundColor = bgColor,
                 LineBreakMode = LineBreakMode.WordWrap,
-                Text = $"{text}"
+                Text = $"{text}",
+                FontAttributes = font
+                
             };
             return l1;
         }

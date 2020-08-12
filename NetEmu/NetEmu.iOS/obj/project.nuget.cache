@@ -1,13 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "5IkAFTy54PlLnxJGkkPhhURxZnpar+GKcB9OGB6A+eMCK73w9syLWtdAcZcDulCszqmABciFKpcQHm7fXeMF3Q==",
+  "dgSpecHash": "sigPmdVt32EBm55hHOseXhchlO6hXOaeFvOCWHyp7mRostd5vGar7yw75y7uygk9c9ivmT8xu5GuDjkNjtDbEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Laptop1\\Documents\\Repository\\VirtualClassroom\\NetEmu\\NetEmu.iOS\\NetEmu.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Laptop1\\.nuget\\packages\\cocossharp\\1.7.1\\cocossharp.1.7.1.nupkg.sha512",
     "C:\\Users\\Laptop1\\.nuget\\packages\\cocossharp.forms\\1.7.1\\cocossharp.forms.1.7.1.nupkg.sha512",
     "C:\\Users\\Laptop1\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\pdfsharp.xamarin.forms\\1.0.0\\pdfsharp.xamarin.forms.1.0.0.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\pdfsharpcore\\1.1.18\\pdfsharpcore.1.1.18.nupkg.sha512",
     "C:\\Users\\Laptop1\\.nuget\\packages\\rg.plugins.popup\\2.0.0.2\\rg.plugins.popup.2.0.0.2.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\sixlabors.core\\1.0.0-beta0007\\sixlabors.core.1.0.0-beta0007.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\sixlabors.imagesharp\\1.0.0-beta0006\\sixlabors.imagesharp.1.0.0-beta0006.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Laptop1\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
     "C:\\Users\\Laptop1\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
     "C:\\Users\\Laptop1\\.nuget\\packages\\xamarin.forms\\4.6.0.726\\xamarin.forms.4.6.0.726.nupkg.sha512"
   ],

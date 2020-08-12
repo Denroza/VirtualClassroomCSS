@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[12.0.3, )"
             },
+            "PdfSharp.Xamarin.Forms": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Rg.Plugins.Popup": {
               "target": "Package",
               "version": "[2.0.0.2, )"
