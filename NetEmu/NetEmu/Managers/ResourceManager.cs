@@ -70,6 +70,26 @@ namespace NetEmu.Managers
         public string SCButton { get; private set; }
         public string NIButton { get; private set; }
         public string QAButton { get; private set; }
+        //Sounds
+        public string MenuMusic { get; private set; }
+        public string GameMusic { get; private set; }
+
+        public void LoadSoundResources()
+        {
+            MenuMusic = $"classroomBGM.m4a";
+            GameMusic = $"quizBGM.m4a";
+            //// LoadingScreenSound = $"loading_screen.xnb";
+            //ButtonClickSound = $"resetsound";
+            //TileClickSound = $"tile_click";
+            //LightningSmashSound = $"thunder.xnb";
+            ////  CoinSound = $"coin_sound.xnb";
+            //CorrectAnswerSound = $"correctsound";
+            //WrongAnswerSound = $"wrongsound";
+            //// GameOverSound = $"game_over.xnb";                                                                                                      
+            ////   TimeMalfunctionSound = $"time_warp.xnb";
+            //AlertSound = $"timeup";
+        }
+
 
         public void LoadGameBackgrounds() {
             ClassroomBG = $"classroom.jpg";

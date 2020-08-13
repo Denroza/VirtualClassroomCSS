@@ -3,6 +3,7 @@ using NetEmu.Managers;
 using NetEmu.Views.Layers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using static NetEmu.Managers.SceneManagers;
 
@@ -18,6 +19,16 @@ namespace NetEmu.Views.Scenes
             var layer = new ClassroomLayer();
             layer.Opacity = 0;
             this.AddLayer(layer,1) ;
+            try
+            {
+                SoundManagers.Instance.PlayMenuMusic();
+            }
+            catch (Exception ex)
+            {
+             
+                Debug.WriteLine(">>> BGM Error>>> " + ex.ToString());
+            }
+
         }
 
         public override SceneType GetSceneType()

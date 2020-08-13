@@ -25,88 +25,88 @@ namespace NetEmu.Managers
 
         #region Reference Code
 
-  //      public void PlayMenuMusic()
-		//{
+        public void PlayMenuMusic()
+        {
 
-		//	IsMenuMusicPlaying = true;
-		//	IsGameMusicPlaying = false;
-		//	if (!IsMusicMute)
-		//		CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.MenuMusic, true);
-		//}
+            IsMenuMusicPlaying = true;
+            IsGameMusicPlaying = false;
+            if (!IsMusicMute)
+                CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.MenuMusic, true);
+        }
 
-		//public void PlayGameMusic()
-		//{
-		//	IsMenuMusicPlaying = false;
-		//	IsGameMusicPlaying = true;
-		//	if (!IsMusicMute)
-		//		CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.GameMusic, true);
-		//}
+        public void PlayGameMusic()
+        {
+            IsMenuMusicPlaying = false;
+            IsGameMusicPlaying = true;
+            if (!IsMusicMute)
+                CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.GameMusic, true);
+        }
 
-		//public void StopBackgroundMusic()
-		//{
-		//	if (!IsMusicMute)
-		//		CCAudioEngine.SharedEngine.StopBackgroundMusic();
-		//}
+        //public void StopBackgroundMusic()
+        //{
+        //	if (!IsMusicMute)
+        //		CCAudioEngine.SharedEngine.StopBackgroundMusic();
+        //}
 
-		//public void PlayLoadingScreenSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.LoadingScreenSound);
-		//}
+        //public void PlayLoadingScreenSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.LoadingScreenSound);
+        //}
 
-		//public void PlayButtonClickSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.ButtonClickSound);
-		//}
+        //public void PlayButtonClickSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.ButtonClickSound);
+        //}
 
-		//public void PlayTileClickSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.TileClickSound);
-		//}
+        //public void PlayTileClickSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.TileClickSound);
+        //}
 
-		//public void PlayLightningSmashSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.LightningSmashSound);
-		//}
+        //public void PlayLightningSmashSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.LightningSmashSound);
+        //}
 
-		//public void PlayCoinSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.CoinSound);
-		//}
+        //public void PlayCoinSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.CoinSound);
+        //}
 
-		//public void PlayCorrectAnswerSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.CorrectAnswerSound);
-		//}
+        //public void PlayCorrectAnswerSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.CorrectAnswerSound);
+        //}
 
-		//public void PlayWrongAnswerSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.WrongAnswerSound);
-		//}
+        //public void PlayWrongAnswerSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.WrongAnswerSound);
+        //}
 
-		//public void PlayGameOverSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.GameOverSound);
-		//}
+        //public void PlayGameOverSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.GameOverSound);
+        //}
 
-		//public void PlayAlertSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.AlertSound);
-		//}
+        //public void PlayAlertSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.AlertSound);
+        //}
 
-		//public void PlayTimeWarpSound()
-		//{
-		//	if (!IsSoundMute)
-		//		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.TimeMalfunctionSound);
-		//}
+        //public void PlayTimeWarpSound()
+        //{
+        //	if (!IsSoundMute)
+        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.TimeMalfunctionSound);
+        //}
         #endregion
 
         public void PlaySoundEffect(string assetName, bool loop = false)
@@ -134,18 +134,18 @@ namespace NetEmu.Managers
 
 		public void PreloadSoundContents()
 		{
-			//ResourceManager.Instance.LoadSoundResources();
+			ResourceManager.Instance.LoadSoundResources();
 
 			// Audio Engine Settings
 			CCAudioEngine.SharedEngine.EffectsVolume = 1.0f;
-			CCAudioEngine.SharedEngine.BackgroundMusicVolume = 0.5f;
+			CCAudioEngine.SharedEngine.BackgroundMusicVolume = 0.75f;
 
 			// Sound Resources
 			List<string> soundBackgrounds = new List<string>
 			{
-				
-
-			};
+                ResourceManager.Instance.MenuMusic,
+                ResourceManager.Instance.GameMusic ,
+            };
 
 			List<string> soundEffects = new List<string>
 			{
