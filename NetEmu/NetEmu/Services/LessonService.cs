@@ -920,10 +920,76 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
             return stack;
         }
         public static StackLayout Core3_4LessonView()
-        {
+        {                   // var l2 = UIService.CreateTextItem($"", Color.White, Color.Transparent); template
+            //var tt1 = UIService.CreateTitleText($"",  $"");
             var stack = new StackLayout();
+            var tt1 = UIService.CreateTitleText($"Overview of Group Policy",
+                $"Group Policy is simply the easiest way to reach out and configure computer and user settings on networks based on Active Directory Domain Services (AD DS). If your business is not using Group Policy, you are missing a huge opportunity to reduce costs, control configurations, keep users productive and happy, and harden security. Think of Group Policy as “touch once, configure many.”{ Environment.NewLine } The requirements for using Group Policy and following the instructions that this white paper provides are straightforward:{ Environment.NewLine }The network must be based on AD DS(that is, at least one server must have the AD DS role installed). To learn more about AD DS, see Active Directory Domain Services Overview on TechNet.{ Environment.NewLine }Computers that you want to manage must be joined to the domain, and users that you want to manage must use domain credentials to log on to their computers.{ Environment.NewLine }You must have permission to edit Group Policy in the domain.{ Environment.NewLine }Although this white paper focuses on using Group Policy in AD DS, you can also configure Group Policy settings locally on each computer. This capability is great for one - off scenarios or workgroup computers, but using local Group Policy is not recommended for business networks based on AD DS.The reason is simple: Domain - based Group Policy centralizes management, so you can touch many computers from one place.Local Group Policy requires that you touch each computer—not an ideal scenario in a large environment.For more information about configuring local Group Policy, see Local Group Policy Editor on TechNet.{ Environment.NewLine }Windows 7 enforces the policy settings that you define by using Group Policy. In most cases, it disables the user interface for those settings.Additionally, because Windows 7 stores Group Policy settings in secure locations in the registry, standard user accounts cannot change those settings.So, by touching a setting one time, you can configure and enforce that setting on many computers. When a setting no longer applies to a computer or user, Group Policy removes the policy setting, restoring the original setting and enabling its user interface. The functionality is all quite amazing and extremely powerful.");
+            var l1 = UIService.CreateTextItem($"Essential Group Policy Concepts", Color.White, Color.Transparent,FontAttributes.Bold);
+            var cap1 = UIService.CreateImageViewCaption($"You can manage all aspects of Group Policy by using the Group Policy Management Console (GPMC). Figure 1 shows the GPMC, and this white paper will refer to this figure many times as you learn about important Group Policy concepts.",$"c3_4_1.png");
+            var tt2 = UIService.CreateTitleText($"Management Console", $"You start the GPMC from the Start menu: Click Start, All Programs, Administrative Tools, Group Policy Management. You can also click Start, type Group Policy Management, and then click Group Policy Management in the Programs section of the Start menu. Windows Server 2008 and Windows Server 2008 R2 include the GPMC when they are running the AD DS role. Otherwise, you can install the GPMC on Windows Server 2008, Windows Server 2008 R2, or Windows 7 as described in the section “Installing the GPMC in Windows 7,” later in this white paper.");
+            var tt3 = UIService.CreateTitleText($"Group Policy objects",
+                $"GPOs contain policy settings. You can think of GPOs as policy documents that apply their settings to the computers and users within their control. If GPOs are policy documents, then the GPMC is like Windows Explorer. You use the GPMC to create, move, and delete GPOs just as you use Windows Explorer to create, move, and delete files.{Environment.NewLine }In the GPMC, you see all the domain’s GPOs in the Group Policy objects folder.In Figure 1, the callout number 1 shows three GPOs for the domain corp.contoso.com domain.These GPOs are:{Environment.NewLine }Accounting Security.This is a custom GPO created specifically for Contoso, Ltd.{Environment.NewLine }Default Domain Controller Policy.Installing the AD DS server role creates this policy by default.It contains policy settings that apply specifically to domain controllers.{Environment.NewLine } Default Domain Policy.Installing the AD DS server role creates this policy by default.It contains policy settings that apply to all computers and users in the domain.");
+            var tt4 = UIService.CreateTitleText($"Group Policy Links", $"At the top level of AD DS are sites and domains. Simple implementations will have a single site and a single domain. Within a domain, you can create organizational units (OUs). OUs are like folders in Windows Explorer. Instead of containing files and subfolders, however, they can contain computers, users, and other objects.{ Environment.NewLine }For example, in Figure 1 you see an OU named Departments.Below the Departments OU, you see four subfolders: Accounting, Engineering, Management, and Marketing.These are child OUs.Other than the Domain Controllers OU that you see in Figure 1, nothing else in the figure is an OU.{ Environment.NewLine }What does this have to do with Group Policy links? Well, GPOs in the Group Policy objects folder have no impact unless you link them to a site, domain, or OU. When you link a GPO to a container, Group Policy applies the GPO’s settings to the computers and users in that container. In Figure 1, the callout number 1 points to two GPOs linked to OUs:{ Environment.NewLine }The first GPO is named Default Domain Policy, and this GPO is linked to the domain corp.contoso.com.This GPO applies to every computer and user in the domain.{ Environment.NewLine }The second GPO is named Accounting Security, and this GPO is linked to the OU named Accounting. This GPO applies to every computer and user in the Accounting OU.{ Environment.NewLine } In the GPMC, you can create GPOs in the Group Policy objects folder and then link them—two steps. You can also create and link a GPO in one step. Most of the time, you will simply create and link a GPO in a single step, which the section “Creating a GPO,” later in this white paper, describes.");
+            var tt5 = UIService.CreateTitleText($"Group Policy Inheritance", $"As the previous section hinted, when you link a GPO to the domain, the GPO applies to the computers and users in every OU and child OU in the domain. Likewise, when you link a GPO to an OU, the GPO applies to the computers and users in every child OU. This concept is called inheritance.");
+            var cap2 = UIService.CreateImageViewCaption($"For example, if you create a GPO named Windows Firewall Settings and link it to the corp.contoso.com domain in Figure 1, the settings in that GPO apply to all of the OUs you see in the figure: Departments, Accounting, Engineering, Management, Marketing, and Domain Controllers. If instead you link the GPO to the Departments OU, the settings in the GPO apply only to the Departments, Accounting, Engineering, Management, and Marketing OUs. It does not apply to the entire domain or the Domain Controllers OU. Moving down one level, if you link the same GPO to the Accounting OU in Figure 1, the settings in the GPO apply only to the Accounting OU, as it has no child OUs. In the GPMC, you can see what GPOs a container is inheriting by clicking the Group Policy Inheritance tab (callout number 1 in Figure 2).", $"c3_4_2.png");
+            var l2 = UIService.CreateTextItem($"Figure 2. Group Policy inheritance and precedence", Color.Black, Color.Transparent,FontAttributes.Bold);
+            var l3 = UIService.CreateTextItem($"So, what happens if multiple GPOs contain the same setting? This is where order of precedence comes into play. In general, the order in which Group Policy applies GPOs determines precedence. The order is site, domain, OU, and child OUs. As a result, GPOs in child OUs have a higher precedence than GPOs linked to parent OUs, which have a higher precedence than GPOs linked to the domain, which have a higher precedence than GPOs linked to the site. An easy way to think of this is that Group Policy applies GPOs from the top down, overwriting settings along the way. In more advanced scenarios, however, you can override the order of precedence.", Color.White, Color.Transparent);
+            var l4 = UIService.CreateTextItem($"You can also have—within a single OU—multiple GPOs that contain the same setting. Like before, the order in which Group Policy applies GPOs determines the order of precedence. In Figure 2, you see two GPOs linked to the domain corp.contoso.com: Windows Firewall Settings and Default Domain Policy. Group Policy applies GPOs with a lower link order after applying GPOs with a higher link order. In this case, it will apply Windows Firewall Settings after Default Domain Policy. Just remember that a link order of 1 is first priority, and a link order of 2 is second priority. You can change the link order for a container by clicking the up and down arrows as shown by callout number 2 in Figure 2.", Color.White, Color.Transparent);
+            var l5 = UIService.CreateTextItem($"Group Policy Settings", Color.White, Color.Transparent,FontAttributes.Bold);
+            var cap3 = UIService.CreateImageViewCaption($"To this point, you have learned about GPOs. You have learned that GPMC is to GPOs and OUs as Windows Explorer is to files and folders. GPOs are the policy documents. At some point, you are going to have to edit one of those documents, though, and the editor you use is the Group Policy Management Editor (GPME), which Figure 3 shows. You open a GPO in the GPME by right-clicking it in the GPMC and clicking Edit. Once you are finished, you simply close the window. The GPME saves your changes automatically, so you do not have to save.", $"c3_4_3.png");
+            var l6 = UIService.CreateTextItem($"Figure 3. Group Policy Management Editor", Color.Black, Color.Transparent,FontAttributes.Bold);
+            var l7 = UIService.CreateTextItem($"In Figure 3, callout numbers 1 and 2 point to Computer Configuration and User Configuration, respectively. The Computer Configuration folder contains settings that apply to computers, regardless of which users log on to them. These tend to be system and security settings that configure and control the computer. The User Configuration folder contains settings that apply to users, regardless of which computer they use. These tend to affect the user experience.{ Environment.NewLine }Within the Computer Configuration and User Configuration folders, you see two subfolders(callout numbers 3 and 4 in Figure 3):{ Environment.NewLine }{ Environment.NewLine }Policies.Policies contains policy settings that Group Policy enforces.{ Environment.NewLine }Preferences.Preferences contains preference settings that you can use to change almost any registry setting, file, folder, or other item. By using preference settings, you can configure applications and Windows features that are not Group Policy–aware.For example, you can create a preference setting that configures a registry value for a third-party application, deletes the Sample Pictures folder from user profiles, or configures an.ini file.You can also choose whether Group Policy enforces each preference setting or not.However, standard user accounts can change most preference settings that you define in the User Configuration folder between Group Policy refreshes.You can learn more about preference settings by reading the Group Policy Preferences Overview.{ Environment.NewLine } When you are first learning Group Policy, most of the settings that you will configure will be in the Administrative Templates folders.These are registry - based policy settings that Group Policy enforces.They are different from other policy settings for two reasons. First, Group Policy stores these settings in specific registry locations, called the Policies branches, which standard user accounts cannot change.Group Policy–aware Windows features and applications look for these settings in the registry.If they find these policy settings, they use the policy settings instead of the regular settings.They often disable the user interface for those settings as well.", Color.White, Color.Transparent);
+            var cap4 = UIService.CreateImageViewCaption($"Second, administrative template files, which have the .admx extension, define templates for these settings. These templates not only define where policy settings go in the registry but also describe how to prompt for them in the GPME. In the Group Policy setting that Figure 4 shows, for example, an administrative template file defines help text, available options, supported operating systems, and so on.", $"c3_4_4.png");
+            var l8 = UIService.CreateTextItem($"Figure 4. Group Policy setting{Environment.NewLine } When you edit a policy setting, you are usually confronted with the choices that callout numbers 1 to 3 indicate in Figure 4.In general, clicking:{Environment.NewLine } Enabled writes the policy setting to the registry with a value that enables it. {Environment.NewLine } {Environment.NewLine } Disabled writes the policy setting to the registry with a value that disables it.{Environment.NewLine } Not Configured leaves the policy setting undefined.Group Policy does not write the policy setting to the registry, and so it has no impact on computers or users.{Environment.NewLine } Generalizing what enabled and disabled means for every policy setting is not possible. You can usually read the help text, shown in callout number 5, to determine exactly what these choices mean.You must also be careful to read the name of the policy setting.For example, some policy settings say, “Turn on feature X,” whereas other policy settings say, “Turn off feature Y.” Enabled and disabled have different meanings in each case. Until you are comfortable, make sure you read the help text for policy settings you configure.{Environment.NewLine } Some policy settings have additional options that you can configure.Callout number 4 in Figure 4 shows the options that are available for the Group Policy refresh interval policy setting.In most cases, the default values match the default values for Windows.As well, the help text usually gives detailed information about the options you can configure.", Color.White, Color.Transparent);
+            var tt6 = UIService.CreateTitleText($"Group Policy Refresh", $"As you learned in the previous section, GPOs contain both computer and user settings. Group Policy applies: Computer settings when Windows starts. User settings after the user logs on to the computer.{ Environment.NewLine } Group Policy also refreshes GPOs on a regular basis, ensuring that Group Policy applies new and changed GPOs without waiting for the computer to restart or the user to log off.The period of time between these refreshes is called the Group Policy refresh interval, and the default is 90 minutes with a bit of randomness built in to prevent all computers from refreshing at the same time.If you change a GPO in the middle of the day, Group Policy will apply your changes within about 90 minutes.You don’t have to wait until the end of the day, when users have logged off of or restarted their computers.In advanced scenarios, you can change the default refresh interval.");
+            var tt7 = UIService.CreateTitleText($"Essential Group Policy Tasks", $"You have now learned the essential Group Policy concepts. You know that a GPO is like a document that contains policy settings. You manage GPOs by using the GPMC and you edit them by using the GPME.{Environment.NewLine }You also know that you link GPOs to AD DS sites, domains, and OUs to apply the GPOs’ settings to those containers.Domains, OUs, and child OUs inherit settings from their parents, but duplicate settings in GPOs linked to child OUs have precedence over the same settings in GPOs linked to parent OUs, which have precedence over GPOs linked to the domain, and so on.{Environment.NewLine }You also know that within a site, domain, or OU, the link order determines the order of precedence(the smaller the number, the higher the precedence).Last, you have an essential understanding of how to edit GPOs and what types of settings they contain.{Environment.NewLine }Now that you know the essential concepts, you are ready to learn the essential tasks.This section describes how to create, edit, and delete GPOs.It describes many other tasks, as well.For each task, you’ll find an explanation of its purpose and step - by - step instructions with screenshots at each step.");
+            var l9 = UIService.CreateTextItem($"Creating a GPO{Environment.NewLine }You create a GPO by using the GPMC. There are two ways to create a GPO:{Environment.NewLine }Create and link a GPO in one step.{Environment.NewLine }Create a GPO in the Group Policy objects folder, and then link it to the domain or OU.{Environment.NewLine }The instructions in this section describe how to create and link a GPO in one step.{Environment.NewLine }You can start with a blank GPO, which the instructions describe, or you can use a starter GPO. Starter GPOs are an advanced topic that you can learn about in Working with Starter GPOs.{Environment.NewLine }To create and link a GPO in the domain or an OU", Color.White, Color.Transparent);
+            var cap5 = UIService.CreateImageViewCaption($"In the GPMC, right-click the domain or OU in which you want to create and link a GPO, and click Create a GPO in this domain, and Link it here.", $"c3_4_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"In the Name box on the New GPO dialog box, type a descriptive name for the GPO, and then click OK.", $"c3_4_6.png");
+            var l10 = UIService.CreateTextItem($"Editing a GPO{Environment.NewLine }In the GPMC, you can open GPOs in the GPME to edit them within any container.To see all of your GPOs, regardless of where you link them, use the Group Policy objects folder to edit them.{Environment.NewLine }To edit a GPO in the domain, an OU, or the Group Policy objects folder", Color.White, Color.Transparent);
+            var cap7 = UIService.CreateImageViewCaption($"In the left pane of the GPMC, click Group Policy objects to display all the domain’s GPOs in the right pane. Alternatively, you can click the domain or any OU to display that container’s GPOs in the right pane.", $"c3_4_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"In the right pane of the GPMC, right-click the GPO that you want to edit, and click Edit to open the GPO in the GPME.", $"c3_4_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"In the GPME, edit the Group Policy settings that you want to change, and close the GPME window when finished. You do not have to save your changes, because the GPME saves your changes automatically.", $"c3_4_9.png");
+            var l11 = UIService.CreateTextItem($"Linking a GPO{Environment.NewLine }If you create and link GPOs in one step, you do not have to manually link GPOs to the domain or OUs. However, if you create a GPO in the Group Policy objects folder or unlink a GPO and want to restore it, you will need to manually link the GPO.The easy way to link a GPO is to simply drag the GPO from the Group Policy objects folder and drop it onto the domain or OU to which you want to link it.{Environment.NewLine }To link a GPO to a domain or OU", Color.White, Color.Transparent);
+            var cap10 = UIService.CreateImageViewCaption($"In the GPMC, right-click the domain or OU to which you want to link the GPO, and then click Link an Existing GPO.", $"c3_4_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"In the Select GPO dialog box, click the GPO that you want to link to the domain or OU, and then click OK.", $"c3_4_11.png");
+            var l12 = UIService.CreateTextItem($"Updating Clients{Environment.NewLine }While editing, testing, or troubleshooting GPOs, you do not need to wait for the Group Policy refresh interval(90 minutes, by default).You can manually update Group Policy on any client computer by running Gpupdate.exe.Gpupdate.exe supports many command - line options, which you can learn about by typing gpupdate.exe /? in a Command Prompt windows In most cases, however, you can follow the instructions in this section to update Group Policy.{Environment.NewLine }To manually update Group Policy by using Gpupdate.exe", Color.White, Color.Transparent);
+            var cap12 = UIService.CreateImageViewCaption($"Click Start, type cmd, and press Enter to open a Command Prompt window.", $"c3_4_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"At the Command Prompt, type gpupdate and press Enter. Gpupdate.exe will update any changed settings. You can force Gpupdate.exe to update all settings, whether or not they have changed recently, by typing gpupdate /force and pressing Enter.", $"c3_4_13.png");
 
-
+            stack.Children.Add(tt1);
+            stack.Children.Add(l1);
+            stack.Children.Add(cap1);
+            stack.Children.Add(tt2);
+            stack.Children.Add(tt3);
+            stack.Children.Add(tt4);
+            stack.Children.Add(tt5);
+            stack.Children.Add(cap2);
+            stack.Children.Add(l2);
+            stack.Children.Add(l3);
+            stack.Children.Add(l4);
+            stack.Children.Add(l5);
+            stack.Children.Add(cap3);
+            stack.Children.Add(l6);
+            stack.Children.Add(l7);
+            stack.Children.Add(cap4);
+            stack.Children.Add(l8);
+            stack.Children.Add(tt6);
+            stack.Children.Add(tt7);
+            stack.Children.Add(l9);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(l10);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(l11);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(l12);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
             return stack;
         }
         public static StackLayout Core3_5LessonView()
@@ -1142,18 +1208,218 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
             stack.Children.Add(l18);
             return stack;
         }
-        public static StackLayout Core3_8LessonView()
+      
+        private static Dictionary<string, string> C3_8T1 {
+            get { return new Dictionary<string, string>() {
+                { "Permission","Description" },
+                 { "Print","Allows users and groups to send documents to the printer and to manage their own print jobs. Also includes the Read special permission allowing viewing, but not alteration, of printer permissions" },
+                 { $"Manage{Environment.NewLine} Printers","Allows full management of the printer, including changing shared status, changing of permissions and properties, taking ownership of printers and print jobs and starting and stopping print jobs. Includes the Read, Change and Take Ownership special permissions." },
+                 { $"Manage{Environment.NewLine}Documents","Allows user and groups to manage print jobs but does not provide the ability to print. Permissions consist of pausing, restarting, resuming and reordering and canceling print jobs. Includes the Read, Change and Take Ownership special permissions" },
+            }; }
+        }
+        private static Dictionary<string, string> C3_8T2
         {
+            get
+            {
+                return new Dictionary<string, string>() {
+                { "Permission","Description" },
+                    { $"Read{Environment.NewLine}Permissions","User or Group may view the permissions on the printer."},
+                    { $"Change{Environment.NewLine}Permissions","User or Group may change the permissions of a printer."},
+                    { $"Take{Environment.NewLine}Ownership","User or Group may take ownership of printer and/or print jobs."},
+                };
+            }
+        }
+        public static StackLayout Core3_8LessonView()
+        {          // var l2 = UIService.CreateTextItem($"", Color.White, Color.Transparent); template
+            //var tt1 = UIService.CreateTitleText($"",  $"");
             var stack = new StackLayout();
+            var l1 = UIService.CreateTextItem($"In the previous chapter it was stated that the Print Management tool provides a central location from which the print services for an entire network may be managed. So far we have only looked and managing the print server running on the local computer. In this section we will look at adding remote servers to the local Print Management configuration. For the purposes of this example a theoretical configuration consisting of two Windows Server 2008 systems named winserver-1 and winserver-2 is assumed. Both systems have the print services role installed and Print Management on winserver-1will be configured to also manage print services on winserver-2. This is achieved by first launching Print Management on the local winserver-1 system (Start -> Administration Tools -> Print Management), right clicking on the Print Servers node of the tree hierarchy in the left hand pane and selecting the Add/Remove Servers option.", Color.White, Color.Transparent);
+            var cap1 = UIService.CreateImageViewCaption($"From the resulting menu, select the Add/Remove Servers option. The resulting dialog box displays the currently configured print servers under the management of local Print Management. If no remote print servers have been added previously the only server listed will be the local system. To add additional print servers either enter a comma separated list of server names, or use the Browse button to locate servers on the network. When one or more servers have been selected, click on the Add to list button to add the servers to the list. The following figure illustrates the Add/Remove Servers dialog box configured with both the local and remote servers:",$"c3_8_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"Once all the required remote print servers have been added to the list, click on Apply then close the dialog to return to the main Print Management window. The new print servers will now appear alongside the local server under Print Servers in the left hand pane of the Print Management screen as illustrated below:", $"c3_8_2.png");
+            var l2 = UIService.CreateTextItem($"Migrating Printers and Queues Between Servers", Color.Black, Color.Transparent,FontAttributes.Bold);
+            var l3 = UIService.CreateTextItem($"Windows Server 2008 also provides the ability to migrate both printers and print queues from one print server to another. This makes it easy, for example, to take a print server off-line for maintenance or to permanently re-assign a printer from one print server to another. The steps outlined below assume that print Management has been configured to manage both the source and target print servers as outlined in the preceding section of this chapter. If this is not the case, the printer export file will need to be copied onto the destination server or made available via file sharing and imported using Print Management on that server.", Color.White, Color.Transparent);
+            var cap3 = UIService.CreateImageViewCaption($"This form of migration is performed using the Printer Migration Wizard which, along with most other tasks, is accessed from the Print Management interface. Once Print Management is up and running, right click on the server in the left pane from which the printer is to be migrated (the source server) and select Export Printers To a File from the menu. Print Management will subsequently display a dialog listing the printer drivers, port and queues currently configured on the selected print server as illustrated below:", $"c3_8_3.png");
+            var l4 = UIService.CreateTextItem($"After reviewing the listed information click Next and select a suitable location to save the printer export file and click Next once again to perform the export process. Depending on the number of printers being exported and the size of the drivers the export process may take a few minutes to complete. If the export was successful a message will appear beneath the progress bar stating this fact. If the export was unsuccessful, click on the Open Event Viewer button provided to learn more about the cause of the problem so that remedial action may be taken. Assuming a successful export click Finishto dismiss the Printer Migration dialog.", Color.White, Color.Transparent);
+            var cap4 = UIService.CreateImageViewCaption($"The next step is to import the printers into the target server. Begin by right clicking on the destination server in the Print Management window and selecting Import printers from a file.... In the resulting dialog, use the browse button to navigate to the export file, select it and click on Next to proceed. Once the file has been read a screen will appear identical to the one displayed prior to exporting the printer objects in the preceding step. Review this information and click Next to display the Select import options screen as illustrated in the following figure:", $"c3_8_4.png");
+            var tt1 = UIService.CreateTitleText($"These options require a little explanation:",
+                $"⦁	Keep existing printers; import copies - It is possible that a printer being imported is already also installed on the destination server. With this option selected, the original printer on the destination server will be left unchanged and the new printer imported as a copy.{Environment.NewLine }⦁	Overwrite existing printers - If the printer being imported is already installed on the target server it is overwritten by the imported copy when this option is selected.{ Environment.NewLine }⦁	List printers that were previously listed - When selected, only printers that were already listed in Active Directory will still be listed after the import process is completed.{ Environment.NewLine }⦁	List all printers - All printers are listed in Active Directory{ Environment.NewLine }⦁	Don't list any printers - No printers are listed in Active Directory");
+            var l5 = UIService.CreateTextItem($"Once the required settings are configured, click Next to initiate the printer import process. The printer configurations, drivers and queues will be subsequently be imported onto the target print server. If errors are reported click on the Open Event Viewer button to obtain additional information. In particular, be mindful of printers that were physically connected to the source print server. Since they are not physically connected to the target server an error will likely occur during the migration. Even if the printer was physically moved to the target system prior to migration it is also possible that it is connected to a different physical port to that used on the source server. Such problems can be resolved by right clicking on the imported printer in Print Management, selecting Properties and making the necessary configuration changes.", Color.White, Color.Transparent);
+            var l6 = UIService.CreateTextItem($"Configuring Printer Permissions", Color.Black, Color.Transparent,FontAttributes.Bold);
+            var l7 = UIService.CreateTextItem($"Access to printers is controlled through the configuration of printer permissions. By default, a printer is accessible to all users on the local system, and if shared, all users elsewhere on the network. Printer permissions are divided into two categories, special permissions and standard permissions. Before describing how to change the permissions on a printer it is first important to understand the meaning of each permission option.", Color.White, Color.Transparent);
+            var l8 = UIService.CreateTextItem($"The standard printer permissions are outlined in the following table:", Color.White, Color.Transparent,FontAttributes.Italic);
+            var table1 = new Grid();
+            #region table1 init
+            table1.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+            table1.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
 
+            table1.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            table1.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            table1.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            #endregion
+            int ctr1 = 0, ctr2 = 0,ctr3 = 0, ctr4=0;
+            for (int col = 0; col < 2; col++) {
+                for (int row = 0; row < 4; row++) {
+                    if (col == 0)
+                    {
+                        var op = UIService.CreateTextItem(C3_8T1.Keys.ToList()[ctr1],Color.Black,Color.White);
+                        if (row == 0) {
+                            op.FontAttributes = FontAttributes.Bold;
+                          
+                        }
+                        op.HorizontalTextAlignment = TextAlignment.Center;
+                        table1.Children.Add(op,col,row);
+                        ctr1++;
 
-            return stack;
+                    }
+                    else {
+                        var op = UIService.CreateTextItem(C3_8T1.Values.ToList()[ctr2], Color.Black, Color.White);
+                        if (row == 0)
+                        {
+                            op.FontAttributes = FontAttributes.Bold;
+                           
+                        }
+                        op.HorizontalTextAlignment = TextAlignment.Center;
+                        table1.Children.Add(op, col, row);
+                        ctr2++;
+                    }
+                }
+            }
+            var l9 = UIService.CreateTextItem($"The special permissions are as follows:", Color.White, Color.Transparent, FontAttributes.Italic);
+            var table2 = new Grid();
+            #region table2 init
+            table2.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+            table2.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+
+            table2.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            table2.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            table2.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+            #endregion
+            for (int col = 0; col < 2; col++)
+            {
+                for (int row = 0; row < 4; row++)
+                {
+                    if (col == 0)
+                    {
+                        var op = UIService.CreateTextItem(C3_8T2.Keys.ToList()[ctr3], Color.Black, Color.White);
+                        if (row == 0)
+                        {
+                            op.FontAttributes = FontAttributes.Bold;
+                         
+                        }
+                        op.HorizontalTextAlignment = TextAlignment.Center;
+                        table2.Children.Add(op, col, row);
+                        ctr3++;
+
+                    }
+                    else
+                    {
+                        var op = UIService.CreateTextItem(C3_8T2.Values.ToList()[ctr4], Color.Black, Color.White);
+                        if (row == 0)
+                        {
+                            op.FontAttributes = FontAttributes.Bold;
+                         
+                        }
+                        op.HorizontalTextAlignment = TextAlignment.Center;
+                        table2.Children.Add(op, col, row);
+                        ctr4++;
+                    }
+                }
+            }
+            var cap5 = UIService.CreateImageViewCaption($"The current permissions for a printer may be viewed and changed by right clicking on that printer in the Print Management tool (Start -> Administrative Tools -> Print Management), selecting Propertiesand clicking on the Security tab:", $"c3_8_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"To change the permissions for a currently listed user or group, select the user or group and change the Allow and Deny permissions to the required settings. When the settings are configured, click on apply to commit the changes. If the user or group is not currently listed in the properties dialog, click on the Add... button to invoke the Select Users or Groups dialog. Change the Location setting if necessary and then enter the names of the users or groups, separated by semi-colons into the bottom text box. Click the Check Names button to verify the selected users or groups exist within the current location scope:", $"c3_8_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"Assuming the names are correct click on OK to return to the properties dialog where the selected users and/or groups will now be included in the Group or user names list. To configure permissions, select a user or group and set the permissions in the Permissions for section of the dialog. Click Apply to commit the changes and repeat the task for any other users or groups added to the list.{Environment.NewLine } To configure the special permissions click on the Advanced button in the Security page of the properties panel to display the Advanced Security Settings dialog as illustrated below:", $"c3_8_7.png");
+            var l10 = UIService.CreateTextItem($"To modify the permissions for a user or group select that object from the list and click Edit... to display the Permission Entry for dialog. In this dialog both the standard and special permissions for the selected user or group are displayed and may be changed as required. As noted previously, certain special permissions are implicit in standard permission settings. For example, setting the Manage Printers standard permission also enables the Read, Change and Take Ownership special permissions. Once the desired permission changes have been made click on OK to dismiss the Permission Entry for dialog, followed by Apply, then OK in the Advanced Security Settings dialog. Finally, click on OK to dismiss the properties dialog and return to Print Management.", Color.White, Color.Transparent);
+            var tt2 = UIService.CreateTitleText($"Changing Printer Ownership",$"After a printer has been installed the owner, by default, is SYSTEM. Ownership may be taken either by an administrator or by a user or group which has been assigned Take ownership permission for the printer.{ Environment.NewLine } To assign ownership to another user or group, open the properties dialog for the printer, select the Security tab and then click on Advanced.In the advanced settings screen, select the Owner tab.This screen will list the current owner, together with a list of users and group to which ownership may be changed.If the intended new owner is not listed in the Change owner to: list, click on the Other users or groups... button to access the Select User or Group dialog box.Enter the name of a user or group and click on the Check Names button.With the correct name selected, click on OK to return to the list of owners. Select the desired owner from the list and click on Apply to commit the change of ownership.");
+            var tt3 = UIService.CreateTitleText($"Printer Pooling Configuration",$"Printer Pooling refers to the process of allocating multiple physical print devices to a single logical printer. In such a configuration print jobs to the logical printer are assigned by the print server to the first available physical printer in the pool. A key requirement is that the physical printers that make up a pool must all use the same print driver and have the same amount of memory.");
+            var cap8 = UIService.CreateImageViewCaption($"To configure printer pooling, install a printer such that it uses a particular port (such as a local port or IP address). Attach the other printers that are to make up the pool, but do not install them via Print Management. Once the first printer is installed, open the properties dialog for that printer by right clicking on it in Print Management and select the Ports tab. In the Ports page select the Enable printer pooling option. If the ports to which the additional printers are connected are listed make sure they are all selected. Note that a pool can be made up of printers connected in any combination of ways (network, serial, parallel, USB etc). In the case of network printers, click on Add Port... and enter the IP address of the additional printer, click New Port... and allow the wizard to create the new port. Once all the new ports are added and selected, click Apply to create the printer pool. The following figure illustrates a printer pool comprising three HP Deskjet network printers:", $"c3_8_8.png");
+            var l11 = UIService.CreateTextItem($"Configuring Printer Availability and Priority", Color.Black, Color.Transparent);
+            var l12 = UIService.CreateTextItem($"Rather than working with the actual physical printers, users are in fact working with logical printers which map onto a physical print device. Windows allows a single physical print device to be assigned to multiple logical printers. This approach brings considerable flexibility in terms of controlling the availability of a printer to different groups of users and the priority of their print jobs.{ Environment.NewLine } This concept is best described by example.Suppose that a printer is to be made available to members of an engineering group only during the office hours.That same printer, however, is to always be available to the management group.Similarly, any print jobs belonging to the management group must be given a higher priority than those of the engineering group.To achieve this objective, two logical printers assigned to the same physical print device will be created, one for engineering and one for management.The availability of the engineering logical printer will be restricted to office hours and given a low priority.The management logical printer will always be available and will be given a high priority.Permissions on the logical printers will then be configured such that the engineering team is denied access to the management printer.", Color.White, Color.Transparent);
+            var cap9 = UIService.CreateImageViewCaption($"Availability and priority is configured from the printer property panel. To access these settings, launch Print Management and navigate to the required printer in the left pane. Right click on the printer, select Properties and then choose the Advanced tab. Once selected, the property panel will appear as follows:", $"c3_8_9.png");
+            var l13 = UIService.CreateTextItem($"For the management logical printer the Always available option will be selected and a high priority assigned (for example 95). Once these values are set, click on the Security tab of the properties dialog and deny access to the printer for the engineering group. Repeat these steps for the engineering logical printer, this time selecting the Available from option and specifying the hours that the printer is available.", Color.White, Color.Transparent);
+
+            stack.Children.Add(l1);
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(l2);
+            stack.Children.Add(l3);
+            stack.Children.Add(cap3);
+            stack.Children.Add(l4);
+            stack.Children.Add(cap4);
+            stack.Children.Add(tt1);
+            stack.Children.Add(l5);
+            stack.Children.Add(l6);
+            stack.Children.Add(l7);
+            stack.Children.Add(l8);
+            stack.Children.Add(table1);
+            stack.Children.Add(l9);
+            stack.Children.Add(table2);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(l10);
+            stack.Children.Add(tt2);
+            stack.Children.Add(tt3);
+            stack.Children.Add(cap8);
+            stack.Children.Add(l11);
+            stack.Children.Add(l12);
+            stack.Children.Add(cap9);
+            stack.Children.Add(l13);
+            return stack;        
         }
         public static StackLayout Core3_9LessonView()
         {
             var stack = new StackLayout();
+            var cap1 = UIService.CreateImageViewCaption($"GO to Startup menu Select COMPUTER tab and Click YaST { Environment.NewLine } The screen will prompt with the “root” Password “Css2015”",$"c3_9_1.png");
+            var cap2 = UIService.CreateImageViewCaption($"Search SAMBA SERVER { Environment.NewLine}Click Samba Server", $"c3_9_2.png");
+            var cap3 = UIService.CreateImageViewCaption($"Samba Server is equivalent to Domain controller in Windows.", $"c3_9_3.png");
+            var cap4 = UIService.CreateImageViewCaption($"Use WORKGROUP as default workgroup name.", $"c3_9_4.png");
+            var cap5 = UIService.CreateImageViewCaption($"Select primary domain controller.", $"c3_9_5.png");
+            var cap6 = UIService.CreateImageViewCaption($"In SAMBA configuration select service start during boot.", $"c3_9_6.png");
+            var cap7 = UIService.CreateImageViewCaption($"Use again “Css2015” as your Samba password.ssss", $"c3_9_7.png");
+            var cap8 = UIService.CreateImageViewCaption($"Next Step is search the NETWORK to edit your network card to setup a STATIC IP Address.", $"c3_9_8.png");
+            var cap9 = UIService.CreateImageViewCaption($"Setting Network if this error appear change network setup method from NETWORK MANAGE SERVICE to WICKED SERVICE ", $"c3_9_9.png");
+            var cap10 = UIService.CreateImageViewCaption($"", $"c3_9_10.png");
+            var cap11 = UIService.CreateImageViewCaption($"Click your NIC Device and Click edit", $"c3_9_11.png");
+            var cap12 = UIService.CreateImageViewCaption($"Choose STATICALLY ASSIGN IP ADDRESS and put our own IP address (don’t forget your IP)  Click save and restart your server.", $"c3_9_12.png");
+            var cap13 = UIService.CreateImageViewCaption($"After reboot open the YaST and search for firewall and Choose disable firewall.", $"c3_9_13.png");
+            var cap14 = UIService.CreateImageViewCaption($"and Click Next", $"c3_9_14.png");
+            var cap15 = UIService.CreateImageViewCaption($"your windows 7 computer make your network static IP address and related in same subnet of your Linux Server. Now ping the IP address of your Linux.", $"c3_9_15.png");
+            var cap16 = UIService.CreateImageViewCaption($"SETUP DHCP Server{ Environment.NewLine } Select again the YaST and search for DHCP server", $"c3_9_16.png");
+            var cap17 = UIService.CreateImageViewCaption($"Click DHCP Server.", $"c3_9_17.png");
+            var cap18 = UIService.CreateImageViewCaption($"Select the NIC and IP address and click next", $"c3_9_18.png");
+            var cap19 = UIService.CreateImageViewCaption($"put your IP Range e.g. (192.168.3.20-192.168.3.50) same to SCOPE in windows 2008 server. Click OK.", $"c3_9_19.png");
+            var cap20 = UIService.CreateImageViewCaption($"In your computer windows 7 change your ip to dynamic setting (obtained) and check in IPCONFIG if the linux server assign an IP addres to your desktop PC.", $"c3_9_20.png");
+            var cap21 = UIService.CreateImageViewCaption($"Check for the shared folder using RUN command", $"c3_9_21.png");
+            var cap22 = UIService.CreateImageViewCaption($"Use “root” as user and “Css2015” as Password", $"c3_9_22.png");
+            var cap23 = UIService.CreateImageViewCaption($"To add more share folder go to SAMBA setting in SHARE tab and add share folder with security authentication.", $"c3_9_23.png");
+            var cap24 = UIService.CreateImageViewCaption($"can also add shared printer in this area.", $"c3_9_24.png");
 
 
+            stack.Children.Add(cap1);
+            stack.Children.Add(cap2);
+            stack.Children.Add(cap3);
+            stack.Children.Add(cap4);
+            stack.Children.Add(cap5);
+            stack.Children.Add(cap6);
+            stack.Children.Add(cap7);
+            stack.Children.Add(cap8);
+            stack.Children.Add(cap9);
+            stack.Children.Add(cap10);
+            stack.Children.Add(cap11);
+            stack.Children.Add(cap12);
+            stack.Children.Add(cap13);
+            stack.Children.Add(cap14);
+            stack.Children.Add(cap15);
+            stack.Children.Add(cap16);
+            stack.Children.Add(cap17);
+            stack.Children.Add(cap18);
+            stack.Children.Add(cap19);
+            stack.Children.Add(cap20);
+            stack.Children.Add(cap21);
+            stack.Children.Add(cap22);
+            stack.Children.Add(cap23);
+            stack.Children.Add(cap24);
+            
             return stack;
         }
 
