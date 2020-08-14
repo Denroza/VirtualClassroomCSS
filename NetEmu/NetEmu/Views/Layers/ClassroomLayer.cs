@@ -109,7 +109,9 @@ namespace NetEmu.Views.Layers
             };
 
             _fileIcon.Released = (touch, _event) => {
-                if (_fileIcon.Opacity !=0) {
+                if (_fileIcon.Opacity !=0)
+                {
+                    SoundManagers.Instance.PlayButtonClickSound();
                     _fileIcon.UpdateDisplayedColor(CCColor3B.White);
                     iconsShowed = false;
                     this.PauseListeners(true);
@@ -133,7 +135,9 @@ namespace NetEmu.Views.Layers
                 _settingsIcon.UpdateDisplayedColor(CCColor3B.Gray);
             };
             _settingsIcon.Released = (touch, _event) => {
-                if (_settingsIcon.Opacity != 0 ) {
+                if (_settingsIcon.Opacity != 0 )
+                {
+                    SoundManagers.Instance.PlayButtonClickSound();
                     _settingsIcon.UpdateDisplayedColor(CCColor3B.White);
                     iconsShowed = false;
                     HideIcons();
@@ -156,6 +160,7 @@ namespace NetEmu.Views.Layers
                     //SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
                     if (!iconsShowed)
                     {
+                        SoundManagers.Instance.PlayButtonClickSound();
                         iconsShowed = true;
                         ShowIcons();
                     }

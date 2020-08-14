@@ -199,6 +199,7 @@ namespace NetEmu.Views.Layers
                         StartNewRound();
                     }
                     else {
+                        SoundManagers.Instance.PlayWrongAnswerSound();
                         choiceButton.UpdateDisplayedColor(CCColor3B.Red);
                         choiceButton.PauseListeners(true);
                         Debug.WriteLine("Selected Wrong answer");

@@ -50,6 +50,7 @@ namespace NetEmu.Views.Layers
 
                 DataIcon.Released = (touch, _event) => {
                     DataIcon.UpdateDisplayedColor(CCColor3B.White);
+                    SoundManagers.Instance.PlayButtonClickSound();
                     Device.BeginInvokeOnMainThread( async () => {
                         await PopupNavigation.Instance.PushAsync(new SubjectSelectionView()) ;
                     });
@@ -70,7 +71,7 @@ namespace NetEmu.Views.Layers
             };
             EnterButton.Released = (touch, _event) => {
                 EnterButton.UpdateDisplayedColor(CCColor3B.White);
-              
+                SoundManagers.Instance.PlayButtonClickSound();
                     //CocoSharpControlUI.DisplayAlert("","No User Profile Detected");
                     AppSettings.CurrentScene = SceneManagers.SceneType.Class;
                     SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);

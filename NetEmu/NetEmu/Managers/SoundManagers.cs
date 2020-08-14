@@ -18,10 +18,11 @@ namespace NetEmu.Managers
 
 		public CCGameView GameView { get; private set; }
 
-		public bool IsMusicMute { get; set; }
-		public bool IsSoundMute { get; set; }
+        public bool IsMusicMute { get; set; } = false;
+        public bool IsSoundMute { get; set; } = false;
 		public bool IsGameMusicPlaying { get; set; }
 		public bool IsMenuMusicPlaying { get; set; }
+        public bool IsLoadingMusicPlaying { get; set; }
 
         #region Reference Code
 
@@ -30,6 +31,7 @@ namespace NetEmu.Managers
 
             IsMenuMusicPlaying = true;
             IsGameMusicPlaying = false;
+            IsLoadingMusicPlaying = false;
             if (!IsMusicMute)
                 CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.MenuMusic, true);
         }
@@ -38,10 +40,19 @@ namespace NetEmu.Managers
         {
             IsMenuMusicPlaying = false;
             IsGameMusicPlaying = true;
+            IsLoadingMusicPlaying = false;
             if (!IsMusicMute)
                 CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.GameMusic, true);
         }
+        public void PlayLoadingMusic()
+        {
 
+            IsMenuMusicPlaying = false;
+            IsGameMusicPlaying = false;
+            IsLoadingMusicPlaying = false;
+            if (!IsMusicMute)
+                CCAudioEngine.SharedEngine.PlayBackgroundMusic(ResourceManager.Instance.LoadingMusic, true);
+        }
         //public void StopBackgroundMusic()
         //{
         //	if (!IsMusicMute)
@@ -54,11 +65,11 @@ namespace NetEmu.Managers
         //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.LoadingScreenSound);
         //}
 
-        //public void PlayButtonClickSound()
-        //{
-        //	if (!IsSoundMute)
-        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.ButtonClickSound);
-        //}
+        public void PlayButtonClickSound()
+        {
+            if (!IsSoundMute)
+                CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.ButtonClick);
+        }
 
         //public void PlayTileClickSound()
         //{
@@ -84,11 +95,11 @@ namespace NetEmu.Managers
         //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.CorrectAnswerSound);
         //}
 
-        //public void PlayWrongAnswerSound()
-        //{
-        //	if (!IsSoundMute)
-        //		CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.WrongAnswerSound);
-        //}
+        public void PlayWrongAnswerSound()
+        {
+            if (!IsSoundMute)
+                CCAudioEngine.SharedEngine.PlayEffect(ResourceManager.Instance.WrongClick);
+        }
 
         //public void PlayGameOverSound()
         //{
@@ -138,18 +149,20 @@ namespace NetEmu.Managers
 
 			// Audio Engine Settings
 			CCAudioEngine.SharedEngine.EffectsVolume = 1.0f;
-			CCAudioEngine.SharedEngine.BackgroundMusicVolume = 0.75f;
+			CCAudioEngine.SharedEngine.BackgroundMusicVolume = 0.35f;
 
 			// Sound Resources
 			List<string> soundBackgrounds = new List<string>
 			{
                 ResourceManager.Instance.MenuMusic,
                 ResourceManager.Instance.GameMusic ,
+                ResourceManager.Instance.LoadingMusic
             };
 
 			List<string> soundEffects = new List<string>
 			{
-            
+                   ResourceManager.Instance.ButtonClick,
+                   ResourceManager.Instance.WrongClick
 			};
 
 			foreach (var bg in soundBackgrounds)

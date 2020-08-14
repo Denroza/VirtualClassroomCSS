@@ -64,28 +64,32 @@ namespace NetEmu.Services
             };
 
             _NIIcon.Released = (touch, _event) => {
-
+                SoundManagers.Instance.PlayButtonClickSound();
+               
                 Device.BeginInvokeOnMainThread(async () => {
                     await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core2));
                 });
             };
             _SCIcon.Released = (touch, _event) => {
-
+                SoundManagers.Instance.PlayButtonClickSound();
                 Device.BeginInvokeOnMainThread(async () => {
                     await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core3));
                 });
             };
             _SIIcon.Released = (touch, _event) => {
+                SoundManagers.Instance.PlayButtonClickSound();
                 Device.BeginInvokeOnMainThread(async () => {
                     await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core1));
                 });
             };
            _QAIcon.Released = (touch, _event) => {
+               SoundManagers.Instance.PlayButtonClickSound();
                layer.RemoveFromParent();
                scene.ResumeListeners(true);
                DialougeService.GameDialouge.GotoLab();
            };
             exitIcon.Released = (touch, _event) => {
+                SoundManagers.Instance.PlayButtonClickSound();
                 layer.RemoveFromParent();
                 scene.ResumeListeners(true);
                

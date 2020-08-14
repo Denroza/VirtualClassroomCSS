@@ -73,11 +73,16 @@ namespace NetEmu.Managers
         //Sounds
         public string MenuMusic { get; private set; }
         public string GameMusic { get; private set; }
-
+        public string LoadingMusic { get; private set; }
+           public string ButtonClick { get; private set; }
+        public string WrongClick { get; private set; }
         public void LoadSoundResources()
         {
             MenuMusic = $"classroomBGM.m4a";
             GameMusic = $"quizBGM.m4a";
+            ButtonClick = $"click";
+            WrongClick = $"wrong";
+            LoadingMusic = $"loadingBGM.m4a";
             //// LoadingScreenSound = $"loading_screen.xnb";
             //ButtonClickSound = $"resetsound";
             //TileClickSound = $"tile_click";
