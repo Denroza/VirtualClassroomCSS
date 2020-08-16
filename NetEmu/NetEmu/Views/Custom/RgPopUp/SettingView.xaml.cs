@@ -17,5 +17,25 @@ namespace NetEmu.Views.Custom.RgPopUp
         {
             InitializeComponent();
         }
+
+        private void music_switch_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void music_slider_DragCompleted(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sound_switch_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void sound_slider_DragCompleted(object sender, EventArgs e)
+        {
+
+        }
     }
 }

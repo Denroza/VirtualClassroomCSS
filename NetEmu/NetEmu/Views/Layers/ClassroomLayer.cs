@@ -92,7 +92,7 @@ namespace NetEmu.Views.Layers
             }
 
             SpriteButtonEvents();
-
+            MusicAndSoundSchedules();
             this.AddChild(_terminal);
            // this.AddChild(_labIcon);
             this.AddChild(_settingsIcon);
@@ -255,6 +255,9 @@ namespace NetEmu.Views.Layers
             });
         }
 
-   
+
+        private void MusicAndSoundSchedules() { 
+        
+        }
     }
 }

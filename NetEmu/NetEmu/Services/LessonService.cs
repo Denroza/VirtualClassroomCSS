@@ -1229,6 +1229,7 @@ $"Windows Server 2003{Environment.NewLine} Datacenter Edition{Environment.NewLin
                 };
             }
         }
+
         public static StackLayout Core3_8LessonView()
         {          // var l2 = UIService.CreateTextItem($"", Color.White, Color.Transparent); template
             //var tt1 = UIService.CreateTitleText($"",  $"");

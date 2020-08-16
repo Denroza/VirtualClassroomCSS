@@ -5,7 +5,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <application android:label="CSS Virtual Classroom" android:icon="@mipmap/icon" android:name="crc6404f9626d2dff10d8.MainApplication" android:allowBackup="true" android:debuggable="true">
+  <application android:label="CSS Virtual Classroom" android:icon="@drawable/icon" android:name="crc6404f9626d2dff10d8.MainApplication" android:allowBackup="true" android:debuggable="true">
     <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/icon_round" android:label="CSS Virtual Classroom" android:theme="@style/MainTheme" android:name="crc6404f9626d2dff10d8.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

@@ -11,7 +11,6 @@ C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\n
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\Views\Custom\RgPopUp\SettingView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\Views\Custom\RgPopUp\ShowImageView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\Views\Custom\RgPopUp\SubjectSelectionView.xaml.g.cs
-C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\Views\Custom\RgPopUp\ToolAndEqView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\NetEmu.AssemblyInfoInputs.cache
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\NetEmu.AssemblyInfo.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Debug\netstandard2.0\NetEmu.csproj.CoreCompileInputs.cache
