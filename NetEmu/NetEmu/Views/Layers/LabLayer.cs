@@ -32,6 +32,7 @@ namespace NetEmu.Views.Layers
         private bool GameFinished = false;
         //Exam Related Variables
         int _round = 0;
+        int _guess = 0;
         //
 
         public LabLayer() : base() {
@@ -159,7 +160,7 @@ namespace NetEmu.Views.Layers
             QuestionScreen.AddChild(QuestionText);
             QuestionScreen.ScaleY = 0;
         
-            ListOfChoices = new List<CCSpriteButton>();
+     
         }
 
         private void LoadAnswers() {
@@ -195,19 +196,41 @@ namespace NetEmu.Views.Layers
                     {
                         
                         _round++;
-                        ClearGameScreens();
-                        StartNewRound();
+
+                        if (_round == QuestionService.LoadedQuestions.Count)
+                        {
+                            GameFinished = true;
+                        }
+                        else {
+                            StartNewRound();
+                        }
+                      
                     }
                     else {
                         SoundManagers.Instance.PlayWrongAnswerSound();
                         choiceButton.UpdateDisplayedColor(CCColor3B.Red);
                         choiceButton.PauseListeners(true);
                         Debug.WriteLine("Selected Wrong answer");
+
+                        if (_guess == 2)
+                        {
+                            if (_round == QuestionService.LoadedQuestions.Count-1)
+                            {
+                                GameFinished = true;
+                            }
+                            else {
+                                _round++;
+                                StartNewRound();
+                            }
+                        
+                        }
+                        else {
+                            _guess++;
+                        }
+                        
                     }
 
-                    if (_round == 5) {
-                        GameFinished = true;
-                    }
+                  
                 };
                 choiceButton.ScaleX = 0;
                
@@ -220,14 +243,18 @@ namespace NetEmu.Views.Layers
         }
 
         private void ClearGameScreens() {
-            AnswerScreens.Children.Clear();
-            AnswerScreens.RemoveAllChildren();
-            QuestionScreen.Children.Clear();
-            QuestionScreen.RemoveAllChildren();
-            foreach (var button in ListOfChoices) {
-                button.PauseListeners(true) ;
-                button.RemoveFromParent();
+            AnswerScreens.Children?.Clear();
+            AnswerScreens?.RemoveAllChildren();
+            QuestionScreen.Children?.Clear();
+            QuestionScreen?.RemoveAllChildren();
+            if (ListOfChoices != null) {
+                foreach (var button in ListOfChoices)
+                {
+                    button?.PauseListeners(true);
+                    button?.RemoveFromParent();
+                }
             }
+          
         }
 
         private  void PlayAnimation() {
@@ -247,7 +274,10 @@ namespace NetEmu.Views.Layers
         }
 
         private void StartNewRound() {
-         
+           
+            //reset round guess
+            _guess = 0;
+            ClearGameScreens();
             LoadQuestionBoard();
             LoadAnswers();
         }

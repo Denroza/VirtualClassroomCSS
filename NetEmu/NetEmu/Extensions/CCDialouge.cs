@@ -229,7 +229,7 @@ namespace NetEmu.Extensions
             // CurrentTileIndex = stateValue;
         }
 
-        public float SpeedUp { get; set; } = 0.2f;
+        public float SpeedUp { get; set; } = 0.035f;
 
         public async Task AddScript(string speaker, string script) {
             UnscheduleAll();
