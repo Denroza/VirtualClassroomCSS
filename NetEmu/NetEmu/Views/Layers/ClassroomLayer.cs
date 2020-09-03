@@ -20,18 +20,18 @@ namespace NetEmu.Views.Layers
         private CCSprite ProfMale;
         private CCRepeatForever ProfAni;                                                              
         //private CCDialouge dialouge;
-        private CCSpriteButton _terminal;
+        private static CCSpriteButton _terminal;
         private CCSpriteButton _labIcon;
         private CCSpriteButton _progressIcon;
         private CCSpriteButton _fileIcon;
         private CCSpriteButton _settingsIcon;
 
 
-        private CCSpriteButton _SIIcon;
-        private CCSpriteButton _SCIcon;
-        private CCSpriteButton _NIIcon;
+        private static CCSpriteButton _SIIcon;
+        private static CCSpriteButton _SCIcon;
+        private static CCSpriteButton _NIIcon;
 
-
+        private static CCSpriteButton _QAIcon;
 
         private bool iconsShowed = false;
         private bool animationDone = false;
@@ -60,7 +60,10 @@ namespace NetEmu.Views.Layers
             _progressIcon = new CCSpriteButton(ResourceManager.Instance.ProgressIcon, Screen.GameWidth / 12, Screen.GameWidth / 12);
              _fileIcon = new CCSpriteButton(ResourceManager.Instance.FileIcon, Screen.GameWidth / 12, Screen.GameWidth / 12);
             _settingsIcon = new CCSpriteButton(ResourceManager.Instance.SettingsIcon, Screen.GameWidth / 12, Screen.GameWidth / 12);
-       
+             _SIIcon = new CCSpriteButton(ResourceManager.Instance.SIButton, Screen.GameWidth / 5, Screen.GameWidth / 5);
+             _SCIcon = new CCSpriteButton(ResourceManager.Instance.SCButton, Screen.GameWidth / 5, Screen.GameWidth / 5);
+             _NIIcon = new CCSpriteButton(ResourceManager.Instance.NIButton, Screen.GameWidth / 5, Screen.GameWidth / 5);
+             _QAIcon = new CCSpriteButton(ResourceManager.Instance.QAButton, Screen.GameWidth / 5f, Screen.GameWidth / 5);
 
 
             _progressIcon.Opacity = 0;
@@ -77,10 +80,29 @@ namespace NetEmu.Views.Layers
                 Schedule(intro=> {
                     if (ScheduleTriggers.SayAfterAuth) {
                         ScheduleTriggers.SayAfterAuth = false;
-
-                        _terminal.Visible = true ;
+                    _terminal.Position = new CCPoint(_terminal.ContentSize.Width / 1.5f, ProfMale.PositionY);
+                        _terminal.Opacity = 0;
+                        _terminal.Visible = true;
                     //    _labIcon.Visible = true;
-                        DialougeService.GameDialouge.IntroAuthScript();
+                        DialougeService.GameDialouge.TerminalExplanation();
+                    }
+                });
+                Schedule(async show => {
+                    if (ScheduleTriggers.ShowTerminl)
+                    {
+                        ScheduleTriggers.ShowTerminl = false;
+                        //    _labIcon.Visible = true;
+                        var shows = new CCFadeTo(0.8f,255);
+                       await AnimationManager.Instance.MoveDanny( AnimationManager.DannyPosition.Right).ContinueWith(async s=> {
+                                 
+                       });
+                        await _terminal.RunActionAsync(shows).ContinueWith(async b => {
+                            var move = new CCMoveTo(0.5f, initialPos);
+                            _terminal.RunAction(move);
+                            await AnimationManager.Instance.MoveDanny(AnimationManager.DannyPosition.Middle,1,0.8f);
+                        }).ContinueWith(async c=> {
+                            DialougeService.GameDialouge.Greetings();
+                        }); ;
                     }
                 });
             }
@@ -93,12 +115,17 @@ namespace NetEmu.Views.Layers
 
             SpriteButtonEvents();
             MusicAndSoundSchedules();
+            LayerSchedules();
             this.AddChild(_terminal);
            // this.AddChild(_labIcon);
             this.AddChild(_settingsIcon);
             this.AddChild(_progressIcon);
             this.AddChild(_fileIcon);
-            
+            this.AddChild(_SIIcon);
+            this.AddChild(_SCIcon);
+            this.AddChild(_NIIcon);
+            this.AddChild(_QAIcon);
+
         }
 
         private void SpriteButtonEvents() {
@@ -114,18 +141,18 @@ namespace NetEmu.Views.Layers
                     SoundManagers.Instance.PlayButtonClickSound();
                     _fileIcon.UpdateDisplayedColor(CCColor3B.White);
                     iconsShowed = false;
-                    this.PauseListeners(true);
-                    Scene.AddChild(UIService.ShowCoreIcons(Scene), 4);
-                    HideIcons();
-                    _fileIcon.Schedule(go => {
-                        if (ScheduleTriggers.GotoLab)
-                        {
-                            ScheduleTriggers.GotoLab = false;
-                            QuestionService.LoadQuestions();
-                            AppSettings.CurrentScene = SceneManagers.SceneType.Lab;
-                            SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
-                        }
-                    });
+                    //this.PauseListeners(true);
+                    //Scene.AddChild(UIService.ShowCoreIcons(Scene), 4);
+                    //HideIcons();
+                    //_fileIcon.Schedule(go => {
+                    //    if (ScheduleTriggers.GotoLab)
+                    //    {
+                    //        ScheduleTriggers.GotoLab = false;
+                    //        QuestionService.LoadQuestions();
+                    //        AppSettings.CurrentScene = SceneManagers.SceneType.Lab;
+                    //        SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
+                    //    }
+                    //});
 
                 }
 
@@ -200,7 +227,8 @@ namespace NetEmu.Views.Layers
             //    });
 
             //};
-
+            ProfMale.RunAction(AnimationManager.Instance.ProfAnimation);
+            ModuleEvents();
         }
 
         protected override void AddedToScene()
@@ -208,10 +236,14 @@ namespace NetEmu.Views.Layers
             base.AddedToScene();
             //    ProfMale.Position = new CCPoint(ProfMale.ContentSize.Width /1.25f, ProfMale.ContentSize.Height/1.05f);
             DialougeService.GameDialouge.Position = new CCPoint(Screen.DeviceWidth/2, DialougeService.GameDialouge.ContentSize.Height/1.75f);
-            ProfMale.RunAction(AnimationManager.Instance.ProfAnimation);
+   
             _terminal.Position = new CCPoint(_terminal.ContentSize.Width/1.5f,Screen.GameHeight - _terminal.ContentSize.Height/1.15f);
-        //    _labIcon.Position = new CCPoint(Screen.GameWidth - _labIcon.ContentSize.Width / 1.15f, _terminal.PositionY);
-       
+            _SIIcon.Position = new CCPoint(-(_SIIcon.ContentSize.Width/2), _terminal.PositionY-_terminal.ContentSize.Height * 1.45f);
+            _SCIcon.Position = new CCPoint(_SIIcon.PositionX, _SIIcon.PositionY - _SCIcon.ContentSize.Height * 1.15f);
+            _NIIcon.Position = new CCPoint(_SIIcon.PositionX, _SCIcon.PositionY - _NIIcon.ContentSize.Height * 1.15f);
+            _QAIcon.Position = new CCPoint(_SIIcon.PositionX, _NIIcon.PositionY - _QAIcon.ContentSize.Height * 1.15f);
+            //    _labIcon.Position = new CCPoint(Screen.GameWidth - _labIcon.ContentSize.Width / 1.15f, _terminal.PositionY);
+
             initialPos = _terminal.Position;
             
         }
@@ -255,9 +287,104 @@ namespace NetEmu.Views.Layers
             });
         }
 
-
+        public static void ModuleSelection(bool shown = false) {
+            //_SIIcon.Position = new CCPoint(_SIIcon.ContentSize.Width * 1.25f, _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+            //_SCIcon.Position = new CCPoint(_SIIcon.PositionX, _SIIcon.PositionY - _SCIcon.ContentSize.Height * 1.15f);
+            //_NIIcon.Position = new CCPoint(_SIIcon.PositionX, _SCIcon.PositionY - _NIIcon.ContentSize.Height * 1.15f);
+            //_QAIcon.Position = new CCPoint(_SIIcon.PositionX, _NIIcon.PositionY - _QAIcon.ContentSize.Height * 1.15f);
+           var shownSI = new CCPoint(_SIIcon.ContentSize.Width * 1.25f, _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+           var showSC = new CCPoint(_SCIcon.ContentSize.Width * 1.25f, _SIIcon.PositionY - _SCIcon.ContentSize.Height * 1.15f);
+           var showNI = new CCPoint(_NIIcon.ContentSize.Width * 1.25f, _SCIcon.PositionY - _NIIcon.ContentSize.Height * 1.15f);
+           var shownQA = new CCPoint(_QAIcon.ContentSize.Width * 1.25f, _NIIcon.PositionY - _QAIcon.ContentSize.Height * 1.15f);
+            var hideSI = new CCPoint(-(_SIIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+            var hideSC = new CCPoint(-(_SCIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+            var hideNI = new CCPoint(-(_NIIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+            var hideQA = new CCPoint(-(_QAIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+            if (shown)                                                                                                  
+            {
+                 _SIIcon.RunActionAsync(new CCMoveTo(0.3f,shownSI)).ContinueWith( a=> {
+                     _SCIcon.RunActionAsync(new CCMoveTo(0.3f, showSC)).ContinueWith( b => {
+                         _NIIcon.RunActionAsync(new CCMoveTo(0.3f, showNI)).ContinueWith( c => {
+                             _QAIcon.RunActionAsync(new CCMoveTo(0.3f, shownQA)).ContinueWith( d => {
+                              //  await AnimationManager.Instance.MoveDanny( AnimationManager.DannyPosition.Middle,1.2f, 0.4f);
+                            });
+                        });
+                    });
+                });
+            }
+            else {
+                 _SIIcon.RunActionAsync(new CCMoveTo(0.3f, hideSI)).ContinueWith( a => {
+                     _SCIcon.RunActionAsync(new CCMoveTo(0.3f, hideSC)).ContinueWith( b => {
+                         _NIIcon.RunActionAsync(new CCMoveTo(0.3f, hideNI)).ContinueWith( c => {
+                             _QAIcon.RunActionAsync(new CCMoveTo(0.3f, hideQA)).ContinueWith(async d => {
+                              await   AnimationManager.Instance.MoveDanny(AnimationManager.DannyPosition.Middle, 1.2f, 0.4f);
+                            });
+                        });
+                    });
+                });
+            } 
+        }
         private void MusicAndSoundSchedules() { 
         
         }
+
+        private void ModuleEvents() {
+            _NIIcon.Pressed = (touch, _event) => {
+
+            };
+            _SIIcon.Pressed = (touch, _event) => {
+
+            };
+            _SCIcon.Pressed = (touch, _event) => {
+
+            };
+            _QAIcon.Pressed = (touch, _event) => {
+
+            };
+       
+
+            _NIIcon.Released = (touch, _event) => {
+                SoundManagers.Instance.PlayButtonClickSound();
+
+                Device.BeginInvokeOnMainThread(async () => {
+                    await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core2));
+                });
+            };
+            _SCIcon.Released = (touch, _event) => {
+                SoundManagers.Instance.PlayButtonClickSound();
+                Device.BeginInvokeOnMainThread(async () => {
+                    await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core3));
+                });
+            };
+            _SIIcon.Released = (touch, _event) => {
+                SoundManagers.Instance.PlayButtonClickSound();
+                Device.BeginInvokeOnMainThread(async () => {
+                    await PopupNavigation.Instance.PushAsync(new SubjectSelectionView(IndentifierServices.CoreIdentity.Core1));
+                });
+            };
+            _QAIcon.Released = (touch, _event) => {
+                SoundManagers.Instance.PlayButtonClickSound();
+                DialougeService.GameDialouge.GotoLab();
+                ModuleSelection(false);
+               
+              
+            };
+
+        }
+
+        private void LayerSchedules()
+        {
+            Schedule(go => {
+                if (ScheduleTriggers.GotoLab)
+                {
+                    ScheduleTriggers.GotoLab = false;
+                    QuestionService.LoadQuestions();
+                    AppSettings.CurrentScene = SceneManagers.SceneType.Lab;
+                    SceneManagers.Instance.NavigateToScene(SceneManagers.SceneType.Loading);
+                }
+            });
+        }
     }
+
+
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NetEmu.Managers
 {
@@ -12,6 +13,14 @@ namespace NetEmu.Managers
 
         public static AnimationManager Instance {
             get { return instance; }
+        }
+
+        private CCPoint dannyOP;
+
+        public enum DannyPosition {
+            Left,
+            Right,
+            Middle
         }
         public CCSprite ProffesorSprite { get; private set; }
         public CCRepeatForever ProfAnimation { get; private set; }
@@ -28,7 +37,7 @@ namespace NetEmu.Managers
             ProffesorSprite.ScaleX = ProffesorSprite.ContentSize.Width / 125f;
             ProffesorSprite.ScaleY = ProffesorSprite.ContentSize.Height / 150f;
             ProffesorSprite.Position = new CCPoint(ProffesorSprite.ContentSize.Width / 1.25f, ProffesorSprite.ContentSize.Height / 1.05f);
-
+            dannyOP = ProffesorSprite.Position;
             //  ProffesorSprite.Opacity = 0;
         }
 
@@ -47,5 +56,16 @@ namespace NetEmu.Managers
 
             //  ProffesorSprite.Opacity = 0;
         }
+
+        public async Task MoveDanny(DannyPosition position,float moveby = 1.2f,float duration = 0.2f) {
+            var move= new CCMoveTo(0.2f,new CCPoint(dannyOP.X ,dannyOP.Y));        
+            switch (position) {
+                case DannyPosition.Left: move = new CCMoveTo(duration, new CCPoint(dannyOP.X/moveby, dannyOP.Y));  break;
+                case DannyPosition.Right: move = new CCMoveTo(duration, new CCPoint(dannyOP.X * moveby, dannyOP.Y)); break;
+                case DannyPosition.Middle: move = new CCMoveTo(duration, new CCPoint(dannyOP.X, dannyOP.Y)); break;
+            }
+          await  ProffesorSprite.RunActionAsync(move);
+        }
+
     }
 }

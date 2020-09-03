@@ -1,11 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1002" android:versionName="1.0.0.2" package="com.dsoft.cssvc" android:isGame="true" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1003" android:versionName="1.0.0.3" package="com.dsoft.cssvc" android:isGame="true" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
 	<application android:label="CSS Virtual Classroom" android:icon="@drawable/Icon">
-     <meta-data
-            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true"/>
-  </application>
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		<meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true" />
+	</application>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

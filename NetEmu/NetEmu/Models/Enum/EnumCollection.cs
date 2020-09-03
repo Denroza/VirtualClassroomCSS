@@ -9,7 +9,8 @@ namespace NetEmu.Models.Enum
         public enum Gender
         {
             Male,
-            Female
+            Female,
+            Default
         }
     }
 }

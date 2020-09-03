@@ -240,7 +240,7 @@ namespace NetEmu.Extensions
             _textLabel.Text = string.Empty;
           //     _textLabel.Text = script;
           var basedScript = "Kumusta at maligayang pagdating sa CSS Virtual Classroom, Mukhabg bago kang studyante paki-lagdaan muna ang iyong impormasyon.";
-            _textLabel.SystemFontSize = CustomSize.resizeFont(basedScript,ContentSize.Width/1.01f);
+            _textLabel.SystemFontSize = CustomSize.resizeFont(script,ContentSize.Width/1.01f);
             var c =script.ToCharArray();
             var num = 0;
             var count = 0;

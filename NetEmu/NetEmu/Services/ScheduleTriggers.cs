@@ -9,6 +9,8 @@ namespace NetEmu.Services
         // Classroom triggers
         public static bool GotoLab { get; set; } = false;
         public static bool SayAfterAuth { get; set; } = false;
+
+        public static bool ShowTerminl { get; set; } = false;
         //
 
         //LabTrigers
