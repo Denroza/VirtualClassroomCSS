@@ -104,10 +104,16 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.GooglePlayServices.Ads">
+      <Version>71.1720.4</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity\MainActivity.cs" />
     <Compile Include="Activity\MainApplication.cs" />
+    <Compile Include="Renderers\Ads\Banners\AdBannerRenderers.cs" />
+    <Compile Include="Renderers\Ads\Interstitial\AdInterstitial.cs" />
+    <Compile Include="Renderers\Ads\Interstitial\AdMobAdListener.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
