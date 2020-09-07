@@ -34,7 +34,7 @@ namespace NetEmu.Services
         }
 
         public static async  void Greetings(this CCDialouge dialouge) {
-           await dialouge.AddScript("Prof. Danny",$"Ano ang nais mong matutunan sa araw na ito. {UserServices.User.Name}").ContinueWith(async w=> {
+           await dialouge.AddScript("Prof. Danny",$"Ano ang nais mong matutunan sa araw na ito. {UserServices.User.Name}?").ContinueWith(async w=> {
                await AnimationManager.Instance.MoveDanny(AnimationManager.DannyPosition.Right, 1.5f, 0.5f).ContinueWith(async a=> {
                    ClassroomLayer.ModuleSelection(true);
                }) ;
@@ -46,7 +46,7 @@ namespace NetEmu.Services
         }
 
         public static async void GotoLab(this CCDialouge dialouge) {
-            await dialouge.AddScript("Prof. Danny", $"Galingang mo ang pag sagot, {UserServices.User.Name}.").ContinueWith(s => {
+            await dialouge.AddScript("Prof. Danny", $"Galingang mo ang pag sagot, {UserServices.User.Name}!").ContinueWith(s => {
                 ScheduleTriggers.GotoLab = true;
             });
         }

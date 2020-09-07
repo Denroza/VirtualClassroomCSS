@@ -2,6 +2,7 @@ C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\bin\Release
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\bin\Release\netstandard2.0\NetEmu.dll
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\bin\Release\netstandard2.0\ref\NetEmu.dll
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\bin\Release\netstandard2.0\NetEmu.pdb
+C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\NetEmu.csprojAssemblyReference.cache
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\App.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\Views\Custom\RgPopUp\AuthenticationView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\Views\Custom\RgPopUp\Control\LessonItem.xaml.g.cs
@@ -11,7 +12,6 @@ C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\Views\Custom\RgPopUp\SettingView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\Views\Custom\RgPopUp\ShowImageView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\Views\Custom\RgPopUp\SubjectSelectionView.xaml.g.cs
-C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\Views\Custom\RgPopUp\ToolAndEqView.xaml.g.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\NetEmu.AssemblyInfoInputs.cache
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\NetEmu.AssemblyInfo.cs
 C:\Users\Laptop1\Documents\Repository\VirtualClassroom\NetEmu\NetEmu\obj\Release\netstandard2.0\NetEmu.csproj.CoreCompileInputs.cache

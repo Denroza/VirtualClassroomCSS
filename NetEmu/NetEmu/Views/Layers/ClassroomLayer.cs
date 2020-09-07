@@ -297,9 +297,9 @@ namespace NetEmu.Views.Layers
            var showNI = new CCPoint(_NIIcon.ContentSize.Width * 1.25f, _SCIcon.PositionY - _NIIcon.ContentSize.Height * 1.15f);
            var shownQA = new CCPoint(_QAIcon.ContentSize.Width * 1.25f, _NIIcon.PositionY - _QAIcon.ContentSize.Height * 1.15f);
             var hideSI = new CCPoint(-(_SIIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
-            var hideSC = new CCPoint(-(_SCIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
-            var hideNI = new CCPoint(-(_NIIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
-            var hideQA = new CCPoint(-(_QAIcon.ContentSize.Width / 2), _terminal.PositionY - _terminal.ContentSize.Height * 1.45f);
+            var hideSC = new CCPoint(-(_SCIcon.ContentSize.Width / 2), _SIIcon.PositionY - _SCIcon.ContentSize.Height * 1.15f);
+            var hideNI = new CCPoint(-(_NIIcon.ContentSize.Width / 2), _SCIcon.PositionY - _NIIcon.ContentSize.Height * 1.15f);
+            var hideQA = new CCPoint(-(_QAIcon.ContentSize.Width / 2), _NIIcon.PositionY - _QAIcon.ContentSize.Height * 1.15f);
             if (shown)                                                                                                  
             {
                  _SIIcon.RunActionAsync(new CCMoveTo(0.3f,shownSI)).ContinueWith( a=> {

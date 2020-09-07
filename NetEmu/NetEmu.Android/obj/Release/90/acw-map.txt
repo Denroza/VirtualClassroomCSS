@@ -4,6 +4,12 @@ netemu.droid.MainActivity;crc6404f9626d2dff10d8.MainActivity
 NetEmu.Droid.MainApplication, NetEmu.Android;crc6404f9626d2dff10d8.MainApplication
 NetEmu.Droid.MainApplication;crc6404f9626d2dff10d8.MainApplication
 netemu.droid.MainApplication;crc6404f9626d2dff10d8.MainApplication
+NetEmu.Droid.Renderers.Ads.Interstitial.AdMobAdListener, NetEmu.Android;crc64d2ff20de6dcc3d2e.AdMobAdListener
+NetEmu.Droid.Renderers.Ads.Interstitial.AdMobAdListener;crc64d2ff20de6dcc3d2e.AdMobAdListener
+netemu.droid.renderers.ads.interstitial.AdMobAdListener;crc64d2ff20de6dcc3d2e.AdMobAdListener
+NetEmu.Droid.Renderers.Ads.Banners.AdBannerRenderer, NetEmu.Android;crc64e75a2f007ae40a5a.AdBannerRenderer
+NetEmu.Droid.Renderers.Ads.Banners.AdBannerRenderer;crc64e75a2f007ae40a5a.AdBannerRenderer
+netemu.droid.renderers.ads.banners.AdBannerRenderer;crc64e75a2f007ae40a5a.AdBannerRenderer
 CocosSharp.CCGameView, CocosSharp;crc64f955e4dd247bcdf3.CCGameView
 CocosSharp.CCGameView;crc64f955e4dd247bcdf3.CCGameView
 cocossharp.CCGameView;crc64f955e4dd247bcdf3.CCGameView
@@ -682,3 +688,6 @@ xamarin.forms.platform.android.appcompat.TabbedPageRenderer;crc64720bb2db43a66fe
 Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer`2, Xamarin.Forms.Platform.Android;crc64720bb2db43a66fe9.ViewRenderer_2
 Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer`2;crc64720bb2db43a66fe9.ViewRenderer_2
 xamarin.forms.platform.android.appcompat.ViewRenderer_2;crc64720bb2db43a66fe9.ViewRenderer_2
+Android.Gms.Ads.Reward.IRewardedVideoAdListenerImplementor, Xamarin.GooglePlayServices.Ads.Lite;mono.com.google.android.gms.ads.reward.RewardedVideoAdListenerImplementor
+Android.Gms.Ads.Reward.IRewardedVideoAdListenerImplementor;mono.com.google.android.gms.ads.reward.RewardedVideoAdListenerImplementor
+mono.com.google.android.gms.ads.reward.RewardedVideoAdListenerImplementor;mono.com.google.android.gms.ads.reward.RewardedVideoAdListenerImplementor
