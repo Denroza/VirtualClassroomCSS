@@ -21,7 +21,7 @@
   <ItemGroup>
     <PackageReference Include="CocosSharp" Version="1.7.1" />
     <PackageReference Include="CocosSharp.Forms" Version="1.7.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="PdfSharp.Xamarin.Forms" Version="1.0.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
